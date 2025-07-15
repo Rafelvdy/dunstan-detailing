@@ -261,7 +261,50 @@
     background: blue;
 }
 
+.ServicesContainer {
+    width: 100%;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
 
+.ServiceCardThinContainer {
+    height: 500px;
+    width: 100%;
+    /* background: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
 
+/* .StackContainer {
+    height: 600px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
 
+.ServiceCardContainer {
+    height: 475px;
+    width: 275px;
+    position: absolute;
+}  
 
+.ServiceCardContainer1 {
+    z-index: 2;
+    transform: translateY(0px);
+}
+
+.ServiceCardContainer2 {
+    z-index: 3;
+    transform: translateY(55px);
+}
+
+.ServiceCardContainer3 {
+    z-index: 4;
+    transform: translateY(110px);
+} */

@@ -1,0 +1,75 @@
+.ServiceCard {
+    height: 100%;
+    width: 100%;
+    background: #1A1A1A;
+    border: 1px solid rgba(128, 128, 128, 0.279);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.ServiceCardHeader {
+    height: 55px;
+    width: 100%;
+    /* border: 1px solid red; */
+    border-radius: 20px 20px 0 0;
+}
+
+.ServiceCardHeaderText {
+    width: 70%;
+    height: 100%;
+    /* border: 1px solid blue; */
+    display: flex;  
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 0.8rem;
+}
+
+.ServiceCardHeaderText h1 {
+    font-size: 30px;
+    font-family: "montserrat";
+    font-weight: 600;
+}
+
+.ServiceCardContent {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.ServiceCardSeparator {
+    height: 1px;
+    width: 87.5%;
+    background: lightgray;
+}
+
+.ServiceImage {
+    width: 85%;
+    aspect-ratio: 16/9;
+    background: lightgray;
+    border-radius: 20px;
+    margin-top: 55px;
+}
+
+.ServiceDescription {
+    width: 85%;
+    height: 200px;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ServiceDescription p {
+    font-size: 13px;
+    font-family: "roboto";
+    text-align: center;
+    color: white;
+    max-width: 95%;
+}

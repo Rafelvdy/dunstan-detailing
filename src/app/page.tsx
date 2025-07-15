@@ -1,6 +1,8 @@
 "use client";
 import styles from "./page.module.css"; 
 import { HamburgerMenu } from "@/components/ui/hamburgerMenu";
+// import ServiceCard from "@/components/ui/serviceCard/serviceCard";
+import ServiceCardThin from "@/components/ui/serviceCard/serviceCardThin";
 import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -21,6 +23,81 @@ export default function Home() {
   const aboutTextContainerRef = useRef<HTMLDivElement>(null);
   const exampleImageRef = useRef<HTMLDivElement>(null);
   const aboutContainerRef = useRef<HTMLDivElement>(null);
+  const serviceCard1Ref = useRef<HTMLDivElement>(null);
+  const serviceCard2Ref = useRef<HTMLDivElement>(null);
+  const serviceCard3Ref = useRef<HTMLDivElement>(null);
+  // const [serviceCard1, setServiceCard1] = useState<boolean>(false);
+  // const [serviceCard2, setServiceCard2] = useState<boolean>(false);
+  // const [serviceCard3, setServiceCard3] = useState<boolean>(false);
+  const [focusedServiceCard, setFocusedServiceCard] = useState<React.RefObject<HTMLDivElement> | null>(null);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+
+  const animateToFullScreen = (serviceCard: React.RefObject<HTMLDivElement | null>) => {
+    if (!serviceCard.current || isAnimating) return;
+
+    setIsAnimating(true);
+    const element = serviceCard.current;
+
+    const rect = element.getBoundingClientRect();
+    const scrollY = window.scrollY;
+
+    gsap.set(element, {
+      position: 'fixed',
+      top: rect.top + scrollY,
+      left: rect.left,
+      width: rect.width,
+      height: rect.height,
+      zIndex: 200,
+    })
+
+    gsap.to(element, {
+      top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100vh',
+    borderRadius: 0,
+    duration: 0.6,
+    ease: "power2.inOut",
+    onComplete: () => {
+      setFocusedServiceCard(serviceCard as React.RefObject<HTMLDivElement>);
+      setIsAnimating(false);
+    }
+    })
+  }
+
+  const animateToNormal = (serviceCard: React.RefObject<HTMLDivElement | null>) => {
+    if (!serviceCard.current || isAnimating) return;
+
+    setIsAnimating(true);
+    const element = serviceCard.current;
+
+    gsap.to(element, {
+      position: 'relative',
+   top: 'auto',
+    left: 'auto',
+    width: '300px',
+    height: '100px',
+    borderRadius: '20px',
+    zIndex: 'auto',
+    duration: 0.6,
+    ease: "power2.inOut",
+    onComplete: () => {
+      setFocusedServiceCard(null);
+      setIsAnimating(false);
+      // Reset all styles to let CSS take over
+      gsap.set(element, { clearProps: "all" });
+    }
+    })
+  }
+
+  const handleServiceClick = (serviceCard: React.RefObject<HTMLDivElement | null>) => {
+    if (focusedServiceCard === serviceCard) {
+      animateToNormal(serviceCard);
+    } else {
+      animateToFullScreen(serviceCard);
+    }
+  }
+
 
   useEffect(() => {
     document.fonts.ready.then(() => {
@@ -110,10 +187,71 @@ export default function Home() {
         ease: "power2.out",
       }, 0.2)
     };
-
-    
-
   }, [isFontLoaded]); // Added empty dependency array
+
+  // useEffect(() => {
+  //   if (serviceCard1) {
+  //     gsap.to(serviceCard1Ref.current, {
+  //       scale: 1.05,
+  //       duration: 0.5,
+  //       ease: "none",
+  //     })
+  //     gsap.to(serviceCard2Ref.current, {
+  //       transform: "translateY(500px)",
+  //       delay: 0.2,
+  //       duration: 1,
+  //       ease: "expo.out",
+  //     })
+  //     gsap.to(serviceCard3Ref.current, {
+  //       transform: "translateY(555px)",
+  //       delay: 0.1,
+  //       duration: 1,
+  //       ease: "expo.out",
+  //     })
+  //   }
+
+  //   if (serviceCard2) {
+  //     console.log("serviceCard2");
+  //     gsap.to(serviceCard2Ref.current, {
+  //       transform: "translateY(-55px)",
+  //       scale: 1.05,
+  //       duration: 0.5,
+  //       ease: "expo.out",
+  //     })
+  //     gsap.to(serviceCard1Ref.current, {
+  //       transform: "translateY(500px)",
+  //       delay: 0.2,
+  //       duration: 1,
+  //       ease: "expo.out",
+  //     })
+  //     gsap.to(serviceCard3Ref.current, {
+  //       transform: "translateY(555px)",
+  //       delay: 0.1,
+  //       duration: 1,
+  //       ease: "expo.out",
+  //     })
+  //   }
+
+  //   if (serviceCard3) {
+  //     gsap.to(serviceCard1Ref.current, {
+  //       scale: 1.05,
+  //       duration: 0.5,
+  //       ease: "none",
+  //     })
+  //     gsap.to(serviceCard2Ref.current, {
+  //       transform: "translateY(500px)",
+  //       delay: 0.2,
+  //       duration: 1,
+  //       ease: "expo.out",
+  //     })
+  //     gsap.to(serviceCard3Ref.current, {
+  //       transform: "translateY(555px)",
+  //       delay: 0.1,
+  //       duration: 1,
+  //       ease: "expo.out",
+  //     })
+  //   }
+  // }, [serviceCard1])
 
   return (
     <>
@@ -125,7 +263,7 @@ export default function Home() {
           </div>
           <div className={styles.MobileNavBarRight}>
           <div className={styles.HamburgerMenuContainer}>
-            <HamburgerMenu 
+            <HamburgerMenu  
               open={open} 
               setOpen={setOpen} 
             />
@@ -170,6 +308,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+
         <div className={styles.AboutContainer} ref={aboutContainerRef}>
           <div className={styles.PFPContainer} ref={pfpRef}></div>
           <div className={styles.AboutTextContainer} ref={aboutTextContainerRef}>
@@ -185,6 +324,35 @@ export default function Home() {
           </div>
           <div className={styles.ExampleImage} ref={exampleImageRef}></div>
         </div>
+        
+        <div className={styles.ServicesContainer}>
+          {/* <div className={styles.StackContainer}>
+              <div className={`${styles.ServiceCardContainer} ${styles.ServiceCardContainer1}`}
+                
+                ref={serviceCard1Ref}
+              >
+                <ServiceCard />
+              </div>
+              <div className={`${styles.ServiceCardContainer} ${styles.ServiceCardContainer2}`}
+                
+                ref={serviceCard2Ref}
+              >
+                <ServiceCard />
+              </div>
+              <div className={`${styles.ServiceCardContainer} ${styles.ServiceCardContainer3}`}
+                
+                ref={serviceCard3Ref}
+              >
+                <ServiceCard />
+              </div>
+          </div> */}
+          <div className={styles.ServiceCardThinContainer}>
+            <ServiceCardThin ref={serviceCard1Ref} onClick={() => handleServiceClick(serviceCard1Ref)} isFullScreen={focusedServiceCard === serviceCard1Ref} />
+            <ServiceCardThin ref={serviceCard2Ref} onClick={() => handleServiceClick(serviceCard2Ref)} isFullScreen={focusedServiceCard === serviceCard2Ref} />
+            <ServiceCardThin ref={serviceCard3Ref} onClick={() => handleServiceClick(serviceCard3Ref)} isFullScreen={focusedServiceCard === serviceCard3Ref} />
+          </div>
+        </div>
+
       </main>
     </>
   );
