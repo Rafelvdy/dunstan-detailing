@@ -1,0 +1,190 @@
+.MobileNavBarContainer {
+    background: #2C2C2C;
+}
+
+.MobileNavBar {
+    /* background: lightgrey; */
+    height: 60px;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    z-index: 100;
+}
+
+.MobileNavBarLeft {
+    width: 50%;
+    height: 100%;
+    /* background: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MobileNavLogo {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: oklch(97.7% 0.017 320.058);
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.LogoTextBottomSpecial {
+    text-align: center;
+    margin-left: 100px;
+    background: white;
+}
+.MobileNavBarRight {
+    width: 50%;
+    height: 100%;
+    /* background: blue; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.HamburgerMenuContainer {
+    margin-right: 20px;
+    position: relative; /* Creates positioning context */
+  }
+  
+  .HamburgerDropdown {
+    position: absolute;
+    top: 100%; /* Appears directly below the container */
+    margin-top: 20px;
+    right: 0;   /* Aligns with right edge of hamburger */
+    min-width: 100px;
+    height: 0px;
+    background: #ededed;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    color: var(--background);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /* Animation */
+    transition: height 0.3s ease;
+  }
+
+  .HamburgerDropdownOpen {
+    height: 200px;
+  }
+  .HamburgerDropdownNav {
+    overflow: hidden;
+  }
+
+  .HamburgerDropdownItem {
+    text-align: center;
+    padding: 0.5rem 0;
+    color: #6631d7;
+  }
+
+
+
+
+
+.PageContainer {
+    background: #0a0a0a;
+}
+
+.HeroContainer {
+    height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.HeroTitleContainer {
+    height: 55%;
+    width: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.HeroTitle {
+    /* border: 1px solid green; */
+    max-width: 250px;
+    margin-right: 20px;
+    margin-top: 30px;
+    
+    /* font-family: montserrat; */
+}
+
+.HeroTitleText {
+    font-family: "montserrat";
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.HeroSubtitleContainer {
+    height: 45%;
+    width: fit-content;
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+
+.HeroSubtitle {
+    /* border: 1px solid yellow; */
+    height: fit-content;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.HeroSubtitleItem {
+    font-family: "Roboto";
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.HeroContactButtonContainer {
+    /* border: 1px solid purple; */
+    height: 100px;
+    width: 150px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.HeroContactButton {
+    font-family: "montserrat";
+    background: #6631d7;
+    padding: 10px 30px;
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.HeroTitleTextHighlight {
+    background-image: linear-gradient(to right, #6631d7, #8f7fee, #dedaff);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+
+.AboutContainer {
+    
+}
+
+
+
