@@ -120,7 +120,19 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.AboutContainer}>
-          
+          <div className={styles.PFPContainer}></div>
+          <div className={styles.AboutTextContainer}>
+            <div className={styles.AboutTextName}>
+              <h2>Luke Dunstan</h2>
+            </div>
+            <div className={styles.AboutTextExperience}>
+              <h3>X+ years of experience, x amount of cars detailed</h3>
+            </div>
+            <div className={styles.AboutTextBrief}>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+            </div>
+          </div>
+          <div className={styles.ExampleImage}></div>
         </div>
       </main>
     </>

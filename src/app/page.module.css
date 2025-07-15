@@ -182,8 +182,86 @@
 
 
 .AboutContainer {
-    
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
+
+.PFPContainer {
+    height: 150px;
+    width: 150px;
+    background: white;
+    border-radius: 50%;
+}
+
+.AboutTextContainer {
+    height: 200px;
+    width: 300px;
+    /* background: white; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.AboutTextName {
+    width: 85%;
+    height: 40px;
+    /* background: grey; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.AboutTextName h2 {
+    font-family: "Homoarakhn";
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.AboutTextExperience {
+    width: 85%;
+    height: 35px;
+    /* background: grey; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.AboutTextExperience h3 {
+    font-family: "Roboto";
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.AboutTextBrief {
+    width: 85%;
+    height: 120px;
+    /* background: grey; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.AboutTextBrief p {
+    font-family: "Roboto";
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.ExampleImage {
+    height: 150px;
+    width: 300px;
+    background: blue;
+}
+
+
 
 
 
