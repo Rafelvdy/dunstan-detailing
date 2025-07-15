@@ -101,10 +101,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 50px;
 }
 
 .HeroTitleContainer {
-    height: 55%;
+    height: 300px;
     width: 100%;
     /* border: 1px solid red; */
     display: flex;
@@ -133,7 +134,7 @@
     /* border: 1px solid blue; */
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-start ;
     justify-content: center;
 }
 
@@ -156,12 +157,11 @@
 
 .HeroContactButtonContainer {
     /* border: 1px solid purple; */
-    height: 100px;
+    height: fit-content;
     width: 150px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    margin-top: 20px;
 }
 
 .HeroContactButton {
