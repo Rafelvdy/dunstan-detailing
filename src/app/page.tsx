@@ -4,10 +4,12 @@ import { HamburgerMenu } from "@/components/ui/hamburgerMenu";
 import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
 // import Link from "next/link";
 
 gsap.registerPlugin(SplitText);
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const [open, setOpen] = useState<boolean>(false);
@@ -15,7 +17,11 @@ export default function Home() {
   const heroSubtitleRef = useRef<HTMLDivElement>(null);
   const heroContactButtonRef = useRef<HTMLDivElement>(null);
   const [isFontLoaded, setIsFontLoaded] = useState<boolean>(false);
-  
+  const pfpRef = useRef<HTMLDivElement>(null);
+  const aboutTextContainerRef = useRef<HTMLDivElement>(null);
+  const exampleImageRef = useRef<HTMLDivElement>(null);
+  const aboutContainerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     document.fonts.ready.then(() => {
       setIsFontLoaded(true);
@@ -23,6 +29,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    //Hero page animations
     if (isFontLoaded && heroTitleRef.current && heroSubtitleRef.current) {
       const heroTitleSplit = SplitText.create(heroTitleRef.current, {
           type: "lines",
@@ -61,7 +68,51 @@ export default function Home() {
         ease: "power3.inOut",
         stagger: 0.1,
       });
-    }
+
+      //About page animations
+      gsap.set(pfpRef.current, {
+        x: 50,
+        opacity: 0,
+      });
+      gsap.set(aboutTextContainerRef.current, {
+        x: 50,
+        opacity: 0,
+      });
+      gsap.set(exampleImageRef.current, {
+        x: 50,
+        opacity: 0,
+      });
+      
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: aboutContainerRef.current,
+          start: "top center",
+          end: "bottom bottom", 
+          markers: true,
+        }
+      })
+      .to(pfpRef.current, { 
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+      }, 0)
+      .to(aboutTextContainerRef.current, {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+      }, 0.1)
+      .to(exampleImageRef.current, {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out",
+      }, 0.2)
+    };
+
+    
+
   }, [isFontLoaded]); // Added empty dependency array
 
   return (
@@ -119,9 +170,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className={styles.AboutContainer}>
-          <div className={styles.PFPContainer}></div>
-          <div className={styles.AboutTextContainer}>
+        <div className={styles.AboutContainer} ref={aboutContainerRef}>
+          <div className={styles.PFPContainer} ref={pfpRef}></div>
+          <div className={styles.AboutTextContainer} ref={aboutTextContainerRef}>
             <div className={styles.AboutTextName}>
               <h2>Luke Dunstan</h2>
             </div>
@@ -132,7 +183,7 @@ export default function Home() {
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
             </div>
           </div>
-          <div className={styles.ExampleImage}></div>
+          <div className={styles.ExampleImage} ref={exampleImageRef}></div>
         </div>
       </main>
     </>
