@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import { HamburgerMenu } from "@/components/ui/hamburgerMenu";
 // import ServiceCard from "@/components/ui/serviceCard/serviceCard";
 import ServiceCardThin from "@/components/ui/serviceCard/serviceCardThin";
+import GalleryCard from "@/components/ui/galleryCard/galleryCard";
 import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -165,7 +166,7 @@ export default function Home() {
           trigger: aboutContainerRef.current,
           start: "top center",
           end: "bottom bottom", 
-          markers: true,
+          markers: false,
         }
       })
       .to(pfpRef.current, { 
@@ -283,7 +284,7 @@ export default function Home() {
         </div>
       </header>
       <main className={styles.PageContainer}>
-        <div className={styles.HeroContainer}>
+        <section className={styles.HeroContainer}>
           <div className={styles.HeroTitleContainer}>
             <div className={styles.HeroTitle} ref={heroTitleRef}>
               {isFontLoaded && (
@@ -307,9 +308,9 @@ export default function Home() {
               )}
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className={styles.AboutContainer} ref={aboutContainerRef}>
+        <section className={styles.AboutContainer} ref={aboutContainerRef}>
           <div className={styles.PFPContainer} ref={pfpRef}></div>
           <div className={styles.AboutTextContainer} ref={aboutTextContainerRef}>
             <div className={styles.AboutTextName}>
@@ -323,9 +324,9 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.ExampleImage} ref={exampleImageRef}></div>
-        </div>
+        </section>
         
-        <div className={styles.ServicesContainer}>
+        <section className={styles.ServicesContainer}>
           {/* <div className={styles.StackContainer}>
               <div className={`${styles.ServiceCardContainer} ${styles.ServiceCardContainer1}`}
                 
@@ -346,12 +347,24 @@ export default function Home() {
                 <ServiceCard />
               </div>
           </div> */}
+          <div className={styles.ServiceTitleContainer}>
+            <h2 className={styles.ServiceTitle}>Services</h2>
+          </div>
           <div className={styles.ServiceCardThinContainer}>
             <ServiceCardThin ref={serviceCard1Ref} onClick={() => handleServiceClick(serviceCard1Ref)} isFullScreen={focusedServiceCard === serviceCard1Ref} />
             <ServiceCardThin ref={serviceCard2Ref} onClick={() => handleServiceClick(serviceCard2Ref)} isFullScreen={focusedServiceCard === serviceCard2Ref} />
             <ServiceCardThin ref={serviceCard3Ref} onClick={() => handleServiceClick(serviceCard3Ref)} isFullScreen={focusedServiceCard === serviceCard3Ref} />
           </div>
-        </div>
+        </section>
+
+        <section className={styles.GalleryContainer}>
+          <GalleryCard index={1}/>
+          <GalleryCard index={2}/>
+          <GalleryCard index={3}/>
+          <GalleryCard index={4}/>
+          <GalleryCard index={5}/>
+          <GalleryCard index={6}/>
+          </section> 
 
       </main>
     </>
