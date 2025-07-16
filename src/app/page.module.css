@@ -200,6 +200,12 @@
     }
 }
 
+@media (min-width: 2560px) {
+    .HeroTitle {
+        margin-right: 350px;
+    }
+}
+
 
 .HeroTitleTextHighlight {
     background-image: linear-gradient(to right, #6631d7, #8f7fee, #dedaff);
