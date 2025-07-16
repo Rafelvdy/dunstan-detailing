@@ -105,7 +105,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth <= 768);
     }
 
     handleResize();
@@ -304,7 +304,7 @@ export default function Home() {
                   <li className={styles.HamburgerDropdownItem}><a href="#home">Home</a></li>
                   <li className={styles.HamburgerDropdownItem}><a href="#services">Services</a></li>
                   <li className={styles.HamburgerDropdownItem}><a href="#about">About</a></li>
-                  <li className={styles.HamburgerDropdownItem}><a href="#contact">Contact</a></li>
+                  <li className={`${styles.HamburgerDropdownItem} ${styles.HamburgerDropdownItemContact}`}><a href="#contact">Contact</a></li>
                 </ul>
               </nav>
             </div>
