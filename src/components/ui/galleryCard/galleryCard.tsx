@@ -20,8 +20,8 @@ const GalleryCard = ({ index }: GalleryCardProps) => {
         const animation = gsap.to(galleryCardRef.current, {
             scrollTrigger: {
                 trigger: galleryCardRef.current,
-                start: "top 80%",
-                end: "top 50%",
+                start: "top 70%",
+                end: "top 40%",
                 scrub: true,
                 markers: false,
             },
