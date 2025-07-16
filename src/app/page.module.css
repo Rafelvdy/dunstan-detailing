@@ -196,6 +196,11 @@
 }
 
 @media (min-width: 600px) {
+    .HeroTitleContainer {
+        align-items: flex-end;
+        /* border: 1px solid red; */
+    }
+
     .HeroTitle {
         max-width: 350px !important;
         width: 100%;
@@ -212,8 +217,14 @@
 }
 
 @media (min-width: 1024px) {
+    .HeroContainer {
+        /* border: 1px solid blue; */
+        gap: 150px;
+    }
     .HeroTitle {
         margin-right: 150px;
+        max-width: 500px !important;
+        width: 100%;
     }
 
     .HeroTitleText {
@@ -222,6 +233,9 @@
 }
 
 @media (min-width: 1440px) {
+    .HeroContainer {
+        gap: 
+    }
     .HeroTitle {
         margin-right: 250px;
     }
