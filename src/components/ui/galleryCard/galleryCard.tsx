@@ -23,7 +23,7 @@ const GalleryCard = ({ index }: GalleryCardProps) => {
                 start: "top 90%",
                 end: "top 60%",
                 scrub: true,
-                markers: true,
+                markers: false,
             },
             x: 0,
             ease: "power2.inOut",
