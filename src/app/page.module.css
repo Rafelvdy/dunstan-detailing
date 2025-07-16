@@ -194,6 +194,11 @@
     }
 }
 
+@media (min-width: 1440px) {
+    .HeroTitle {
+        margin-right: 250px;
+    }
+}
 
 
 .HeroTitleTextHighlight {
