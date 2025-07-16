@@ -107,14 +107,13 @@
 .HeroTitleContainer {
     height: 300px;
     width: 100%;
-    /* border: 1px solid red; */
+    border: 1px solid red;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .HeroTitle {
-    /* border: 1px solid green; */
+    border: 1px solid green;
     max-width: 250px;
     margin-right: 20px;
     margin-top: 30px;
@@ -172,6 +171,19 @@
     font-size: 22px;
     font-weight: 600;
 }
+
+@media (min-width: 600px) {
+    .HeroTitle {
+        max-width: 350px !important;
+        width: 100%;
+    }
+
+    .HeroTitleText {
+        font-size: 38px;
+    }
+}
+
+
 
 .HeroTitleTextHighlight {
     background-image: linear-gradient(to right, #6631d7, #8f7fee, #dedaff);
