@@ -94,6 +94,7 @@ export default function Home() {
   const handleServiceClick = (serviceCard: React.RefObject<HTMLDivElement | null>) => {
     if (focusedServiceCard === serviceCard) {
       animateToNormal(serviceCard);
+      
     } else {
       animateToFullScreen(serviceCard);
     }
@@ -105,6 +106,20 @@ export default function Home() {
       setIsFontLoaded(true);
     });
   }, []);
+
+  // Prevent scrolling when a service card is in fullscreen mode
+  useEffect(() => {
+    if (focusedServiceCard) {
+      document.body.classList.add('service-card-fullscreen');
+    } else {
+      document.body.classList.remove('service-card-fullscreen');
+    }
+
+    // Cleanup function to ensure class is removed if component unmounts
+    return () => {
+      document.body.classList.remove('service-card-fullscreen');
+    };
+  }, [focusedServiceCard]);
 
   useEffect(() => {
     //Hero page animations
