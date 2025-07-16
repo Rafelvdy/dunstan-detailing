@@ -11,6 +11,15 @@
     z-index: 100;
 }
 
+.MobileNavBarHidden {
+    display: none;
+} 
+
+.MobileNavBarVisible {
+    display: flex;
+}
+
+
 .MobileNavBarLeft {
     width: 50%;
     height: 100%;
@@ -18,25 +27,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0.4rem;
 }
 
 .MobileNavLogo {
     width: 100%;
     height: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: oklch(97.7% 0.017 320.058);
-    border-radius: 10px;
-    margin-left: 20px;
+    filter: invert(1);
+    margin-left: 10px;
 }
 
-.LogoTextBottomSpecial {
-    text-align: center;
-    margin-left: 100px;
-    background: white;
-}
 .MobileNavBarRight {
     width: 50%;
     height: 100%;

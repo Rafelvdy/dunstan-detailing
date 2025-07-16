@@ -9,6 +9,7 @@ import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
+import Image from "next/image";
 // import Link from "next/link";
 
 gsap.registerPlugin(SplitText);
@@ -16,6 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const [open, setOpen] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const heroTitleRef = useRef<HTMLDivElement>(null);
   const heroSubtitleRef = useRef<HTMLDivElement>(null);
   const heroContactButtonRef = useRef<HTMLDivElement>(null);
@@ -100,6 +102,17 @@ export default function Home() {
     }
   }
 
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    }
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => { window.removeEventListener('resize', handleResize); }
+  }, []);
 
   useEffect(() => {
     document.fonts.ready.then(() => {
@@ -272,9 +285,10 @@ export default function Home() {
   return (
     <>
       <header className={styles.MobileNavBarContainer}>
-        <div className={styles.MobileNavBar}>
+        <div className={`${styles.MobileNavBar} ${isMobile ? styles.MobileNavBarVisible : styles.MobileNavBarHidden}`}>
           <div className={styles.MobileNavBarLeft}>
             <div className={styles.MobileNavLogo}>
+              <Image src="/logos/LongLogo-nobg.png" alt="logo" width={200} height={200} />
             </div>
           </div>
           <div className={styles.MobileNavBarRight}>
