@@ -205,6 +205,7 @@ export default function Home() {
       </header>
       <main className={styles.PageContainer}>
         <section className={styles.HeroContainer}>
+          <div className={styles.GridBackgroundContainer}></div>
           <div className={styles.HeroTitleContainer}>
             <div className={styles.HeroTitle} ref={heroTitleRef}>
               <h1 className={styles.HeroTitleText}>Premium Car Detailing that <span className={styles.HeroTitleTextHighlight}>SHINES</span> above the Rest.</h1>
