@@ -4,6 +4,7 @@ import { HamburgerMenu } from "@/components/ui/hamburgerMenu";
 // import ServiceCard from "@/components/ui/serviceCard/serviceCard";
 import ServiceCardThin from "@/components/ui/serviceCard/serviceCardThin";
 import GalleryCard from "@/components/ui/galleryCard/galleryCard";
+import DeskNav from "@/components/ui/navBar/desktop/deskNav";
 import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -288,7 +289,7 @@ export default function Home() {
         <div className={`${styles.MobileNavBar} ${isMobile ? styles.MobileNavBarVisible : styles.MobileNavBarHidden}`}>
           <div className={styles.MobileNavBarLeft}>
             <div className={styles.MobileNavLogo}>
-              <Image src="/logos/LongLogo-nobg.png" alt="logo" width={200} height={200} />
+              <Image src="/logos/LongLogo-nobg.png" alt="logo" width={200} height={200} objectFit="contain"/>
             </div>
           </div>
           <div className={styles.MobileNavBarRight}>
@@ -311,6 +312,7 @@ export default function Home() {
           </div>
           </div>
         </div>
+        {!isMobile && <DeskNav />}
       </header>
       <main className={styles.PageContainer}>
         <section className={styles.HeroContainer}>
