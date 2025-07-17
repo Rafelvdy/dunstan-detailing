@@ -399,10 +399,32 @@
 
 .GalleryContainer {
     width: 100%;
-    min-height: 200dvh;
+    height: 275dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     /* background: red; */
+    position: relative;
+}
+
+.GalleryTitle{
+    font-family: "Homoarakhn";
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+@media (min-width: 600px) {
+    .GalleryContainer {
+        height: 280dvh;
+    }
+}
+
+@media (min-width: 1440px) {
+    .GalleryContainer {
+        height: 305dvh;
+    }
 }

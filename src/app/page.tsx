@@ -31,6 +31,7 @@ export default function Home() {
   const serviceCard2Ref = useRef<HTMLDivElement>(null);
   const serviceCard3Ref = useRef<HTMLDivElement>(null);
   const heroImageRef = useRef<HTMLImageElement>(null);
+  const galleryTitleRef = useRef<HTMLDivElement>(null);
   // const [serviceCard1, setServiceCard1] = useState<boolean>(false);
   // const [serviceCard2, setServiceCard2] = useState<boolean>(false);
   // const [serviceCard3, setServiceCard3] = useState<boolean>(false);
@@ -78,20 +79,20 @@ export default function Home() {
 
     gsap.to(element, {
       position: 'relative',
-   top: 'auto',
-    left: 'auto',
-    width: '300px',
-    height: '100px',
-    borderRadius: '20px',
-    zIndex: 'auto',
-    duration: 0.6,
-    ease: "power2.inOut",
-    onComplete: () => {
-      setFocusedServiceCard(null);
-      setIsAnimating(false);
-      // Reset all styles to let CSS take over
-      gsap.set(element, { clearProps: "all" });
-    }
+      top: 'auto',
+      left: 'auto',
+      width: '300px',
+      height: '100px',
+      borderRadius: '20px',
+      zIndex: 'auto',
+      duration: 0.6,
+      ease: "power2.inOut",
+      onComplete: () => {
+        setFocusedServiceCard(null);
+        setIsAnimating(false);
+        // Reset all styles to let CSS take over
+        gsap.set(element, { clearProps: "all" });
+      }
     })
   }
 
@@ -142,8 +143,15 @@ export default function Home() {
       const heroTitleSplit = SplitText.create(heroTitleRef.current, {
           type: "lines",
           linesClass: "line",
-          autoSplits: true,      
+          autoSplits: true,   
       });
+
+      const galleryTitleSplit = SplitText.create(galleryTitleRef.current, {
+        type: "lines",
+        linesClass: "line",
+        autoSplits: true,
+        mask: "lines",
+    });
 
       const heroSubtitleSplit = SplitText.create(heroSubtitleRef.current, {
         type: "lines",
@@ -202,7 +210,7 @@ export default function Home() {
         x: 50,
         opacity: 0,
       });
-      
+
       gsap.timeline({
         scrollTrigger: {
           trigger: aboutContainerRef.current,
@@ -229,8 +237,24 @@ export default function Home() {
         duration: 1,
         ease: "power2.out",
       }, 0.2)
+
+      gsap.set(galleryTitleSplit.lines, {
+        y: 100,
+      })
+
+      gsap.to(galleryTitleSplit.lines, {
+        scrollTrigger: {
+          trigger: galleryTitleRef.current,
+          start: "top 90%",
+        },
+        y: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      })
     };
   }, [isFontLoaded]); // Added empty dependency array
+
+
 
   return (
     <>
@@ -316,12 +340,15 @@ export default function Home() {
         </section>
 
         <section className={styles.GalleryContainer}>
-          <GalleryCard index={1}/>
-          <GalleryCard index={2}/>
-          <GalleryCard index={3}/>
-          <GalleryCard index={4}/>
-          <GalleryCard index={5}/>
-          <GalleryCard index={6}/>
+          <div className={styles.GalleryTitleContainer}>
+            <h2 className={styles.GalleryTitle} ref={galleryTitleRef}>Gallery</h2>
+          </div>
+          <GalleryCard index={1} isMobile={isMobile}/>
+          <GalleryCard index={2} isMobile={isMobile}/>
+          <GalleryCard index={3} isMobile={isMobile}/>
+          <GalleryCard index={4} isMobile={isMobile}/>
+          <GalleryCard index={5} isMobile={isMobile}/>
+          <GalleryCard index={6} isMobile={isMobile}/>
           </section> 
 
       </main>

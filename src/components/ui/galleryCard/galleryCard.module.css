@@ -4,3 +4,17 @@
     background: white;
     border-radius: 20px;
 }
+
+@media (min-width: 600px) {
+    .GalleryCard {
+        height: 200px;
+        width: 400px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .GalleryCard {
+        height: 250px;
+        width: 500px;
+    }
+}
