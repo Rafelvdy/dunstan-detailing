@@ -118,53 +118,53 @@
 }
 
 .HeroContainer {
-    min-height: 100dvh;
+    height: 100dvh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    
 }
-
+/* 
 .HeroTitleContainer {
-    height: 300px;
+    height: fit-content;
     width: 100%;
-    /* border: 1px solid red; */
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    background: red;
+    padding-left: 10px;
 }
+
 .HeroTitle {
-    /* border: 1px solid green; */
-    max-width: 250px;
-    margin-right: 20px;
-    margin-top: 30px;
-    
-    /* font-family: montserrat; */
+    width: 350px;
+    background: blue;
+    font-family: montserrat;
 }
 
 .HeroTitleText {
     font-family: "montserrat";
-    font-size: 32px;
+    font-size: clamp(32px, 8.5vw, 45px);
     font-weight: 600;
-}
+    text-align: left;
+} */
 
 .HeroSubtitleContainer {
-    height: 45%;
-    width: fit-content;
-    border: 1px solid blue;
+    width: fit-content6;
+    /* border: 1px solid blue; */
     display: flex;
     flex-direction: column;
     align-items: flex-start ;
     justify-content: center;
+    margin-top: 50px;
 }
 
 
 .HeroSubtitle {
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     height: fit-content;
-    width: 100px;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -195,56 +195,104 @@
     font-weight: 600;
 }
 
+.HeroImageContainer {
+    height: fit-content;
+    width: 500px;
+    background: white;
+    border-radius: 20px;
+}
+
 @media (min-width: 600px) {
-    .HeroTitleContainer {
-        align-items: flex-end;
-        /* border: 1px solid red; */
+    /* .HeroTitleContainer {
+        justify-content: space-around;
     }
 
     .HeroTitle {
-        max-width: 350px !important;
-        width: 100%;
-        margin-right: 60px;
+        width: fit-content;
+        max-width: 85%;
+        margin-left: 70px;
     }
 
     .HeroTitleText {
-        font-size: 38px;
-    }
+        font-size: clamp(38px, 8.5vw, 48px);
+    } */
 
     .HeroSubtitleContainer {
         margin-top: 80px;
     }
+    
+    
 }
 
 @media (min-width: 1024px) {
-    .HeroContainer {
-        /* border: 1px solid blue; */
-        gap: 150px;
+    /* .HeroTitleContainer {
+        justify-content: flex-start;
     }
     .HeroTitle {
-        margin-right: 150px;
-        max-width: 500px !important;
-        width: 100%;
+        width: fit-content;
+        max-width: 90%;
+        margin-top: 80px;
     }
 
     .HeroTitleText {
-        font-size: 48px;
+        font-size: clamp(48px, 8.5vw, 62px);
+    } */
+
+    .HeroSubtitleContainer {
+        margin-top: 100px;
+    }
+
+    .HeroSubtitleItem {
+        font-size: 32px;
     }
 }
 
 @media (min-width: 1440px) {
-    
-    .HeroTitle {
-        margin-right: 250px;
+/* 
+    .HeroTitleContainer {
+        justify-content: space-around;
     }
+
+    .HeroTitleText {
+        font-size: 56px;
+        letter-spacing: 1px;
+    } */
 }
 
 @media (min-width: 2560px) {
-    .HeroTitle {
-        margin-right: 350px;
-    }
 }
 
+
+.HeroTitleContainer {
+    width: 100%;
+    height: fit-content;
+    /* background: red; */
+    padding: 0rem 1rem;
+}
+
+.HeroTitle {
+    width: 90vw;
+    height: fit-content;
+    /* background: blue; */
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.HeroTitleText {
+    font-family: "montserrat";
+    font-size: clamp(44px, 12vw, 62px);
+    font-weight: 600;
+    text-align: left;
+}
+
+@media (min-width: 1440px) {
+    .HeroTitle {
+        max-width: 900px;
+        margin-left: 10vw;
+    }
+}
 
 .HeroTitleTextHighlight {
     background-image: linear-gradient(to right, #6631d7, #8f7fee, #dedaff);
@@ -333,6 +381,10 @@
     width: 300px;
     background: blue;
 }
+
+/* @media (min-width: 600px) {
+
+}  */
 
 .ServicesContainer {
     width: 100%;

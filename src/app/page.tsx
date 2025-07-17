@@ -30,6 +30,7 @@ export default function Home() {
   const serviceCard1Ref = useRef<HTMLDivElement>(null);
   const serviceCard2Ref = useRef<HTMLDivElement>(null);
   const serviceCard3Ref = useRef<HTMLDivElement>(null);
+  const heroImageRef = useRef<HTMLImageElement>(null);
   // const [serviceCard1, setServiceCard1] = useState<boolean>(false);
   // const [serviceCard2, setServiceCard2] = useState<boolean>(false);
   // const [serviceCard3, setServiceCard3] = useState<boolean>(false);
@@ -139,7 +140,7 @@ export default function Home() {
     //Hero page animations
     if (isFontLoaded && heroTitleRef.current && heroSubtitleRef.current) {
       const heroTitleSplit = SplitText.create(heroTitleRef.current, {
-          type: "lines",
+          type: "words,lines",
           linesClass: "line",
           autoSplits: true,      
       });
@@ -160,6 +161,11 @@ export default function Home() {
         opacity: 0,
       });
 
+      gsap.set(heroImageRef.current, {
+        y: 50,
+        opacity: 0,
+      })
+
       gsap.to(heroTitleSplit.lines, {
         y: 0,
         opacity: 1,
@@ -174,6 +180,13 @@ export default function Home() {
         duration: 1,
         ease: "power3.inOut",
         stagger: 0.1,
+      });
+
+      gsap.to(heroImageRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.inOut",
       });
 
       //About page animations
@@ -219,70 +232,6 @@ export default function Home() {
     };
   }, [isFontLoaded]); // Added empty dependency array
 
-  // useEffect(() => {
-  //   if (serviceCard1) {
-  //     gsap.to(serviceCard1Ref.current, {
-  //       scale: 1.05,
-  //       duration: 0.5,
-  //       ease: "none",
-  //     })
-  //     gsap.to(serviceCard2Ref.current, {
-  //       transform: "translateY(500px)",
-  //       delay: 0.2,
-  //       duration: 1,
-  //       ease: "expo.out",
-  //     })
-  //     gsap.to(serviceCard3Ref.current, {
-  //       transform: "translateY(555px)",
-  //       delay: 0.1,
-  //       duration: 1,
-  //       ease: "expo.out",
-  //     })
-  //   }
-
-  //   if (serviceCard2) {
-  //     console.log("serviceCard2");
-  //     gsap.to(serviceCard2Ref.current, {
-  //       transform: "translateY(-55px)",
-  //       scale: 1.05,
-  //       duration: 0.5,
-  //       ease: "expo.out",
-  //     })
-  //     gsap.to(serviceCard1Ref.current, {
-  //       transform: "translateY(500px)",
-  //       delay: 0.2,
-  //       duration: 1,
-  //       ease: "expo.out",
-  //     })
-  //     gsap.to(serviceCard3Ref.current, {
-  //       transform: "translateY(555px)",
-  //       delay: 0.1,
-  //       duration: 1,
-  //       ease: "expo.out",
-  //     })
-  //   }
-
-  //   if (serviceCard3) {
-  //     gsap.to(serviceCard1Ref.current, {
-  //       scale: 1.05,
-  //       duration: 0.5,
-  //       ease: "none",
-  //     })
-  //     gsap.to(serviceCard2Ref.current, {
-  //       transform: "translateY(500px)",
-  //       delay: 0.2,
-  //       duration: 1,
-  //       ease: "expo.out",
-  //     })
-  //     gsap.to(serviceCard3Ref.current, {
-  //       transform: "translateY(555px)",
-  //       delay: 0.1,
-  //       duration: 1,
-  //       ease: "expo.out",
-  //     })
-  //   }
-  // }, [serviceCard1])
-
   return (
     <>
       <header className={styles.MobileNavBarContainer}>
@@ -316,11 +265,19 @@ export default function Home() {
       </header>
       <main className={styles.PageContainer}>
         <section className={styles.HeroContainer}>
-          <div className={styles.HeroTitleContainer}>
+          {/* <div className={styles.HeroTitleContainer}>
             <div className={styles.HeroTitle} ref={heroTitleRef}>
               {isFontLoaded && (
                 <h1 className={styles.HeroTitleText}>Premium Car Detailing that <span className={styles.HeroTitleTextHighlight}>SHINES</span> above the Rest.</h1>
               )}
+            </div>
+            <div className={styles.HeroImageContainer}>
+              {!isMobile && <Image src="/images/car-image.png" alt="hero-image" width={500} height={500} objectFit="contain" className={styles.HeroImage} ref={heroImageRef}/>}
+            </div>
+          </div> */}
+          <div className={styles.HeroTitleContainer}>
+            <div className={styles.HeroTitle}>
+              <h1 className={styles.HeroTitleText}>Premium Car Detailing that <span className={styles.HeroTitleTextHighlight}>SHINES</span> above the Rest.</h1>
             </div>
           </div>
           <div className={styles.HeroSubtitleContainer}>
@@ -358,26 +315,6 @@ export default function Home() {
         </section>
         
         <section className={styles.ServicesContainer}>
-          {/* <div className={styles.StackContainer}>
-              <div className={`${styles.ServiceCardContainer} ${styles.ServiceCardContainer1}`}
-                
-                ref={serviceCard1Ref}
-              >
-                <ServiceCard />
-              </div>
-              <div className={`${styles.ServiceCardContainer} ${styles.ServiceCardContainer2}`}
-                
-                ref={serviceCard2Ref}
-              >
-                <ServiceCard />
-              </div>
-              <div className={`${styles.ServiceCardContainer} ${styles.ServiceCardContainer3}`}
-                
-                ref={serviceCard3Ref}
-              >
-                <ServiceCard />
-              </div>
-          </div> */}
           <div className={styles.ServiceTitleContainer}>
             <h2 className={styles.ServiceTitle}>Services</h2>
           </div>
