@@ -140,7 +140,7 @@ export default function Home() {
     //Hero page animations
     if (isFontLoaded && heroTitleRef.current && heroSubtitleRef.current) {
       const heroTitleSplit = SplitText.create(heroTitleRef.current, {
-          type: "words,lines",
+          type: "lines",
           linesClass: "line",
           autoSplits: true,      
       });
@@ -171,7 +171,7 @@ export default function Home() {
         opacity: 1,
         duration: 1,
         ease: "power3.inOut",
-        stagger: 0.1,
+        stagger: 0.2,
       });
 
       gsap.to(heroSubtitleSplit.lines, {
@@ -265,18 +265,8 @@ export default function Home() {
       </header>
       <main className={styles.PageContainer}>
         <section className={styles.HeroContainer}>
-          {/* <div className={styles.HeroTitleContainer}>
-            <div className={styles.HeroTitle} ref={heroTitleRef}>
-              {isFontLoaded && (
-                <h1 className={styles.HeroTitleText}>Premium Car Detailing that <span className={styles.HeroTitleTextHighlight}>SHINES</span> above the Rest.</h1>
-              )}
-            </div>
-            <div className={styles.HeroImageContainer}>
-              {!isMobile && <Image src="/images/car-image.png" alt="hero-image" width={500} height={500} objectFit="contain" className={styles.HeroImage} ref={heroImageRef}/>}
-            </div>
-          </div> */}
           <div className={styles.HeroTitleContainer}>
-            <div className={styles.HeroTitle}>
+            <div className={styles.HeroTitle} ref={heroTitleRef}>
               <h1 className={styles.HeroTitleText}>Premium Car Detailing that <span className={styles.HeroTitleTextHighlight}>SHINES</span> above the Rest.</h1>
             </div>
           </div>

@@ -126,29 +126,6 @@
     justify-content: center;
     
 }
-/* 
-.HeroTitleContainer {
-    height: fit-content;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background: red;
-    padding-left: 10px;
-}
-
-.HeroTitle {
-    width: 350px;
-    background: blue;
-    font-family: montserrat;
-}
-
-.HeroTitleText {
-    font-family: "montserrat";
-    font-size: clamp(32px, 8.5vw, 45px);
-    font-weight: 600;
-    text-align: left;
-} */
 
 .HeroSubtitleContainer {
     width: fit-content6;
@@ -159,7 +136,6 @@
     justify-content: center;
     margin-top: 50px;
 }
-
 
 .HeroSubtitle {
     /* border: 1px solid yellow; */
@@ -178,7 +154,7 @@
 }
 
 .HeroContactButtonContainer {
-    border: 1px solid purple;
+    /* border: 1px solid purple; */
     height: fit-content;
     width: 150px;
     display: flex;
@@ -203,41 +179,12 @@
 }
 
 @media (min-width: 600px) {
-    /* .HeroTitleContainer {
-        justify-content: space-around;
-    }
-
-    .HeroTitle {
-        width: fit-content;
-        max-width: 85%;
-        margin-left: 70px;
-    }
-
-    .HeroTitleText {
-        font-size: clamp(38px, 8.5vw, 48px);
-    } */
-
     .HeroSubtitleContainer {
         margin-top: 80px;
-    }
-    
-    
+    } 
 }
 
 @media (min-width: 1024px) {
-    /* .HeroTitleContainer {
-        justify-content: flex-start;
-    }
-    .HeroTitle {
-        width: fit-content;
-        max-width: 90%;
-        margin-top: 80px;
-    }
-
-    .HeroTitleText {
-        font-size: clamp(48px, 8.5vw, 62px);
-    } */
-
     .HeroSubtitleContainer {
         margin-top: 100px;
     }
@@ -245,18 +192,6 @@
     .HeroSubtitleItem {
         font-size: 32px;
     }
-}
-
-@media (min-width: 1440px) {
-/* 
-    .HeroTitleContainer {
-        justify-content: space-around;
-    }
-
-    .HeroTitleText {
-        font-size: 56px;
-        letter-spacing: 1px;
-    } */
 }
 
 @media (min-width: 2560px) {
@@ -303,7 +238,7 @@
 
 
 .AboutContainer {
-    min-height: 100dvh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -382,9 +317,34 @@
     background: blue;
 }
 
-/* @media (min-width: 600px) {
+@media (min-width: 600px) {
+    .PFPContainer {
+        height: 200px;
+        width: 200px;
+    }
 
-}  */
+    .AboutTextContainer {
+        height: 250px;
+        width: 400px;
+    }
+
+    .AboutTextName h2 {
+        font-size: 24px;
+    }
+
+    .AboutTextExperience h3 {
+        font-size: 14px;
+    }
+
+    .AboutTextBrief p {
+        font-size: 14px;
+    }
+
+    .ExampleImage {
+        height: 200px;
+        width: 400px;
+    }
+} 
 
 .ServicesContainer {
     width: 100%;
@@ -420,36 +380,6 @@
     justify-content: center;
     gap: 20px;
 }
-
-/* .StackContainer {
-    height: 600px;
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-}
-
-.ServiceCardContainer {
-    height: 475px;
-    width: 275px;
-    position: absolute;
-}  
-
-.ServiceCardContainer1 {
-    z-index: 2;
-    transform: translateY(0px);
-}
-
-.ServiceCardContainer2 {
-    z-index: 3;
-    transform: translateY(55px);
-}
-
-.ServiceCardContainer3 {
-    z-index: 4;
-    transform: translateY(110px);
-} */
-
 
 .GalleryContainer {
     width: 100%;
