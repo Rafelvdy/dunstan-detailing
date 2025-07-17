@@ -5,6 +5,25 @@
     border-radius: 20px;
 }
 
+@media (min-width: 600px) {
+    .ServiceCardThin {
+        width: 450px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .ServiceCardThin {
+        width: 500px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .ServiceCardThin {
+        height: 125px;
+    }
+}
+
+
 .FullScreen {
     position: fixed !important;
     top: 0 !important;

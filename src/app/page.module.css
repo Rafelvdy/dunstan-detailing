@@ -366,7 +366,7 @@
 
 .ServiceTitle {
     font-family: "montserrat";
-    font-size: 32px;
+    font-size: clamp(32px, 8vw, 42px);
     font-weight: 600;
 }
 
@@ -379,6 +379,22 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
+}
+
+@media (min-width: 1024px) {
+    .ServiceCardThinContainer {
+        gap: 40px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .ServiceCardThinContainer {
+        gap: 50px;
+    }
+
+    .ServiceTitle {
+        margin-bottom: 75px;
+    }
 }
 
 .GalleryContainer {
