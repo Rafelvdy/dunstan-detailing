@@ -1,6 +1,6 @@
 .ServiceCardThin {
     width: 300px;
-    height: 100px;
+    height: 120px;
     background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 50%, #313131 100%);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -61,14 +61,116 @@
     }
 }
 
-
-.FullScreen {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    z-index: 200 !important; /* Higher than nav bar's 100 */
-    background: #1A1A1A;
-    border-radius: 0 !important; /* Remove border radius for full screen */
+.ServiceGrid {
+    display: grid;
+    grid-template-columns: 1fr 80px; /* Fixed 80px for price area */
+    grid-template-rows: 40px 1fr; /* Fixed 30px for header */
+    grid-template-areas: 
+      "header header"
+      "description price";
+    width: 300px;
+    height: 120px;
 }
+
+.ServiceGridTitle {
+    grid-area: header;
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 24px;
+    font-family: "Homoarakhn";
+    letter-spacing: 3px;
+    background-image: linear-gradient(to right, #6631d7, #8f7fee, #dedaff);
+}
+
+.ServiceGridDescription {
+    grid-area: description;
+    padding: 8px;
+    font-size: 12px;
+    overflow: hidden; /* Prevents text overflow */
+    font-family: "Montserrat";
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ServiceGridPrice {
+    grid-area: price;
+    padding: 8px;
+    text-align: center;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 600px) {
+    .ServiceGrid {
+        width: 450px;
+        grid-template-columns: 1fr 100px; /* Slightly wider price area */
+        grid-template-rows: 45  px 1fr; /* Fixed 30px for header */
+    }
+
+    .ServiceGridDescription {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .ServiceGridPrice {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .ServiceGrid {
+        width: 500px;
+        grid-template-columns: 1fr 120px; /* Even wider price area */
+      }
+      
+      .ServiceGridTitle {
+        font-size: 15px;
+        padding: 6px 12px;
+      }
+      
+      .ServiceGridDescription {
+        padding: 12px;
+        font-size: 14px;
+      }
+      
+      .ServiceGridPrice {
+        padding: 12px;
+        font-size: 14px;
+      }
+}
+
+@media (min-width: 1440px) {
+    .ServiceGrid {
+      height: 125px;
+      grid-template-rows: 35px 1fr; /* Taller header for more space */
+    }
+    
+    .ServiceGridTitle {
+      font-size: 16px;
+      padding: 8px 15px;
+      line-height: 19px;
+    }
+    
+    .ServiceGridDescription {
+      padding: 15px;
+      font-size: 15px;
+    }
+    
+    .ServiceGridPrice {
+      padding: 15px;
+      font-size: 15px;
+    }
+  }
+
+  .ServiceGridPriceText {
+    background: white;
+    color: black;
+    padding: 8px 15px;
+    border-radius: 4px;
+  }

@@ -32,78 +32,6 @@ export default function Home() {
   const serviceCard3Ref = useRef<HTMLDivElement>(null);
   const heroImageRef = useRef<HTMLImageElement>(null);
   const galleryTitleRef = useRef<HTMLDivElement>(null);
-  // const [serviceCard1, setServiceCard1] = useState<boolean>(false);
-  // const [serviceCard2, setServiceCard2] = useState<boolean>(false);
-  // const [serviceCard3, setServiceCard3] = useState<boolean>(false);
-  const [focusedServiceCard, setFocusedServiceCard] = useState<React.RefObject<HTMLDivElement> | null>(null);
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
-
-  const animateToFullScreen = (serviceCard: React.RefObject<HTMLDivElement | null>) => {
-    if (!serviceCard.current || isAnimating) return;
-
-    setIsAnimating(true);
-    const element = serviceCard.current;
-
-    const rect = element.getBoundingClientRect();
-    const scrollY = window.scrollY;
-
-    gsap.set(element, {
-      position: 'fixed',
-      top: rect.top + scrollY,
-      left: rect.left,
-      width: rect.width,
-      height: rect.height,
-      zIndex: 200,
-    })
-
-    gsap.to(element, {
-      top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
-    borderRadius: 0,
-    duration: 0.6,
-    ease: "power2.inOut",
-    onComplete: () => {
-      setFocusedServiceCard(serviceCard as React.RefObject<HTMLDivElement>);
-      setIsAnimating(false);
-    }
-    })
-  }
-
-  const animateToNormal = (serviceCard: React.RefObject<HTMLDivElement | null>) => {
-    if (!serviceCard.current || isAnimating) return;
-
-    setIsAnimating(true);
-    const element = serviceCard.current;
-
-    gsap.to(element, {
-      position: 'relative',
-      top: 'auto',
-      left: 'auto',
-      width: '300px',
-      height: '100px',
-      borderRadius: '20px',
-      zIndex: 'auto',
-      duration: 0.6,
-      ease: "power2.inOut",
-      onComplete: () => {
-        setFocusedServiceCard(null);
-        setIsAnimating(false);
-        // Reset all styles to let CSS take over
-        gsap.set(element, { clearProps: "all" });
-      }
-    })
-  }
-
-  const handleServiceClick = (serviceCard: React.RefObject<HTMLDivElement | null>) => {
-    if (focusedServiceCard === serviceCard) {
-      animateToNormal(serviceCard);
-      
-    } else {
-      animateToFullScreen(serviceCard);
-    }
-  }
 
 
   useEffect(() => {
@@ -123,19 +51,6 @@ export default function Home() {
     });
   }, []);
 
-  // Prevent scrolling when a service card is in fullscreen mode
-  useEffect(() => {
-    if (focusedServiceCard) {
-      document.body.classList.add('service-card-fullscreen');
-    } else {
-      document.body.classList.remove('service-card-fullscreen');
-    }
-
-    // Cleanup function to ensure class is removed if component unmounts
-    return () => {
-      document.body.classList.remove('service-card-fullscreen');
-    };
-  }, [focusedServiceCard]);
 
   useEffect(() => {
     //Hero page animations
@@ -334,9 +249,24 @@ export default function Home() {
             <h2 className={styles.ServiceTitle}>Services</h2>
           </div>
           <div className={styles.ServiceCardThinContainer}>
-            <ServiceCardThin ref={serviceCard1Ref} onClick={() => handleServiceClick(serviceCard1Ref)} isFullScreen={focusedServiceCard === serviceCard1Ref} />
-            <ServiceCardThin ref={serviceCard2Ref} onClick={() => handleServiceClick(serviceCard2Ref)} isFullScreen={focusedServiceCard === serviceCard2Ref} />
-            <ServiceCardThin ref={serviceCard3Ref} onClick={() => handleServiceClick(serviceCard3Ref)} isFullScreen={focusedServiceCard === serviceCard3Ref} />
+            <ServiceCardThin ref={serviceCard1Ref} 
+              title="Service 1" 
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec mollis turpis. 
+              Fusce tempus velit at magna."   
+              price="Price" 
+            />
+            <ServiceCardThin ref={serviceCard2Ref} 
+              title="Service 2" 
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec mollis turpis. 
+              Fusce tempus velit at magna."  
+              price="Price" 
+            />
+            <ServiceCardThin ref={serviceCard3Ref} 
+              title="Service 3" 
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec mollis turpis. 
+              Fusce tempus velit at magna."   
+              price="Price" 
+            />
           </div>
         </section>
 
