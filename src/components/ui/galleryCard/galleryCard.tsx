@@ -14,7 +14,6 @@ const GalleryCard = ({ index, isMobile }: GalleryCardProps) => {
     const galleryCardRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         if (!galleryCardRef.current) return;
-        let animation: GSAPAnimation;
 
         const getInitialX = (index: number, isMobile: boolean) => {
             const offset = isMobile ? "50%" : "100%";
@@ -34,7 +33,7 @@ const GalleryCard = ({ index, isMobile }: GalleryCardProps) => {
             rotation: initialRotation
         });
 
-        animation = gsap.to(galleryCardRef.current, {
+        const animation = gsap.to(galleryCardRef.current, {
             scrollTrigger: {
                 trigger: galleryCardRef.current,
                 start: "top 70%",

@@ -149,6 +149,8 @@
     align-items: flex-start ;
     justify-content: center;
     margin-top: 50px;
+    position: relative;
+    z-index: 3;
 }
 
 .HeroSubtitle {
@@ -217,6 +219,8 @@
     height: fit-content;
     /* background: red; */
     padding: 0rem 1rem;
+    position: relative;
+    z-index: 3;
 }
 
 .HeroTitle {
