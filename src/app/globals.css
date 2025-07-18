@@ -14,6 +14,16 @@
   --font-homoarakhn: var(--font-homoarakhn);
   --font-montserrat: var(--font-montserrat);
   --font-roboto: var(--font-roboto);
+  --animate-marquee: marquee var(--duration) infinite linear;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,0 +1,117 @@
+.ReviewsSection {
+    padding: 60px 0;
+    background: var(--background);
+    width: 100%;
+    overflow: hidden;
+}
+
+.ReviewsTitleContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    padding: 0 1rem;
+}
+
+.ReviewsTitle {
+    font-family: "Homoarakhn", sans-serif;
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: normal;
+    letter-spacing: 2px;
+    text-align: center;
+    background-image: linear-gradient(to right, #6631d7, #8f7fee, #dedaff);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    margin: 0;
+}
+
+.MarqueeContainer {
+    width: 100%;
+    position: relative;
+}
+
+.ReviewsMarquee {
+    --duration: 45s; /* Slightly slower for better readability */
+    --gap: 1.5rem;
+    padding: 20px 0;
+}
+
+/* Add fade gradients on the sides for smooth marquee effect */
+.MarqueeContainer::before,
+.MarqueeContainer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.MarqueeContainer::before {
+    left: 0;
+    background: linear-gradient(to right, var(--background), transparent);
+}
+
+.MarqueeContainer::after {
+    right: 0;
+    background: linear-gradient(to left, var(--background), transparent);
+}
+
+/* Responsive adjustments */
+@media (min-width: 600px) {
+    .ReviewsSection {
+        padding: 80px 0;
+    }
+    
+    .ReviewsTitleContainer {
+        margin-bottom: 50px;
+    }
+    
+    .ReviewsMarquee {
+        --duration: 50s;
+        padding: 25px 0;
+    }
+    
+    .MarqueeContainer::before,
+    .MarqueeContainer::after {
+        width: 150px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .ReviewsSection {
+        padding: 100px 0;
+    }
+    
+    .ReviewsTitleContainer {
+        margin-bottom: 60px;
+    }
+    
+    .ReviewsMarquee {
+        --duration: 55s;
+        padding: 30px 0;
+    }
+    
+    .MarqueeContainer::before,
+    .MarqueeContainer::after {
+        width: 200px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .ReviewsSection {
+        padding: 120px 0;
+    }
+    
+    .ReviewsTitleContainer {
+        margin-bottom: 70px;
+    }
+    
+    .ReviewsMarquee {
+        --duration: 60s;
+        padding: 35px 0;
+    }
+} 

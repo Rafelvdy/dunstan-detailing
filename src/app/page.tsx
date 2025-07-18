@@ -5,6 +5,7 @@ import { HamburgerMenu } from "@/components/ui/hamburgerMenu";
 import ServiceCardThin from "@/components/ui/serviceCard/serviceCardThin";
 import GalleryCard from "@/components/ui/galleryCard/galleryCard";
 import DeskNav from "@/components/ui/navBar/desktop/deskNav";
+import ReviewsSection from "@/components/ui/reviewsSection";
 import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -242,7 +243,9 @@ export default function Home() {
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
             </div>
           </div>
-          <div className={styles.ExampleImage} ref={exampleImageRef}></div>
+          <div className={styles.ExampleImage} ref={exampleImageRef}>
+          <ReviewsSection />
+          </div>
         </section>
         
         <section className={styles.ServicesContainer}>
@@ -282,6 +285,8 @@ export default function Home() {
           <GalleryCard index={5} isMobile={isMobile}/>
           <GalleryCard index={6} isMobile={isMobile}/>
           </section> 
+
+          
 
       </main>
     </>
