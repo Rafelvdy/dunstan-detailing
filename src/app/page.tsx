@@ -243,9 +243,10 @@ export default function Home() {
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
             </div>
           </div>
-          <div className={styles.ExampleImage} ref={exampleImageRef}>
+          {/* <div className={styles.ExampleImage} ref={exampleImageRef}>
           <ReviewsSection />
-          </div>
+          </div> */}
+          <ReviewsSection />
         </section>
         
         <section className={styles.ServicesContainer}>
