@@ -497,8 +497,8 @@
 }
 
 .GalleryTitle{
-    font-family: "Homoarakhn";
-    font-size: 28px;
+    font-family: "montserrat";
+    font-size: clamp(32px, 8vw, 42px);
     font-weight: 600;
     letter-spacing: 1px;
     position: sticky;
