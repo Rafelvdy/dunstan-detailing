@@ -193,8 +193,10 @@ export default function Home() {
               <nav className={styles.HamburgerDropdownNav}>
                 <ul>
                   <li className={styles.HamburgerDropdownItem}><a href="#home">Home</a></li>
-                  <li className={styles.HamburgerDropdownItem}><a href="#services">Services</a></li>
-                  <li className={styles.HamburgerDropdownItem}><a href="#about">About</a></li>
+                  <li className={styles.HamburgerDropdownItem}><a href="#services">About</a></li>
+                  <li className={styles.HamburgerDropdownItem}><a href="#about">Service</a></li>
+                  <li className={styles.HamburgerDropdownItem}><a href="#gallery">Gallery</a></li>
+                  <li className={styles.HamburgerDropdownItem}><a href="#pricing">Pricing</a></li>
                   <li className={`${styles.HamburgerDropdownItem} ${styles.HamburgerDropdownItemContact}`}><a href="#contact">Contact</a></li>
                 </ul>
               </nav>
@@ -204,7 +206,7 @@ export default function Home() {
         </div>
         {!isMobile && <DeskNav />}
       </header>
-      <main className={styles.PageContainer}>
+      <main className={styles.PageContainer} id="home">
         <section className={styles.HeroContainer}>
           <div className={styles.GridBackgroundContainer}></div>
           <div className={styles.HeroTitleContainer}>

@@ -15,7 +15,7 @@
 }
 
 .NavBarContainer {
-    width: 360px;
+    width: 520px;
     height: 60%;
     background: white;
     margin-right: 20px;
@@ -41,6 +41,12 @@
 
 .DesktopNavBarItem {
     flex-shrink: 0;
+    transition: all 0.5s ease;
+}
+
+.DesktopNavBarItem:hover {
+    color: #6631d7;
+    transform: scale(1.05);
 }
 
 .DesktopNavBarItemContact {
