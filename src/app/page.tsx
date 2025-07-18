@@ -242,10 +242,7 @@ export default function Home() {
             <div className={styles.AboutTextBrief}>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
             </div>
-          </div>
-          {/* <div className={styles.ExampleImage} ref={exampleImageRef}>
-          <ReviewsSection />
-          </div> */}
+          </div>  
           <ReviewsSection />
         </section>
         

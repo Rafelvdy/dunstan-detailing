@@ -63,6 +63,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* background: red; */
+    padding: 10px;
 }
 
 .StarRating {
@@ -125,13 +127,17 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    /* background: blue; */
+    padding: 10px;
 }
 
 .CustomerName {
-    font-family: "Homoarakhn", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 12px;
     letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.8);
+    /* color: rgba(255, 255, 255, 0.8); */
+    color: #6631d7;
+    font-weight: 600;
     font-style: italic;
 }
 
@@ -139,7 +145,7 @@
 @media (min-width: 600px) {
     .ReviewCard {
         width: 400px;
-        height: 150px;
+        height: 170px;
     }
     
     .ReviewGrid {
@@ -164,7 +170,7 @@
 @media (min-width: 1024px) {
     .ReviewCard {
         width: 450px;
-        height: 160px;
+        height: 170px;
     }
     
     .ReviewGrid {
@@ -187,7 +193,7 @@
 @media (min-width: 1440px) {
     .ReviewCard {
         width: 500px;
-        height: 170px;
+        height: 190px;
     }
     
     .ReviewGrid {
