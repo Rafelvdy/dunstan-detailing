@@ -11,7 +11,7 @@
 
 .LogoContainer {
     margin-left: 20px;
-    filter: invert(1);
+    /* filter: invert(1); */
 }
 
 .NavBarContainer {

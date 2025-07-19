@@ -6,6 +6,7 @@ import ServiceCardThin from "@/components/ui/serviceCard/serviceCardThin";
 import GalleryCard from "@/components/ui/galleryCard/galleryCard";
 import DeskNav from "@/components/ui/navBar/desktop/deskNav";
 import ReviewsSection from "@/components/ui/reviewsSection";
+import PageSvg from "@/components/svg/pageSVG";
 import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -193,10 +194,10 @@ export default function Home() {
               <nav className={styles.HamburgerDropdownNav}>
                 <ul>
                   <li className={styles.HamburgerDropdownItem}><a href="#home">Home</a></li>
-                  <li className={styles.HamburgerDropdownItem}><a href="#services">About</a></li>
-                  <li className={styles.HamburgerDropdownItem}><a href="#about">Service</a></li>
+                  <li className={styles.HamburgerDropdownItem}><a href="#about">About</a></li>
+                  <li className={styles.HamburgerDropdownItem}><a href="#services">Service</a></li>
                   <li className={styles.HamburgerDropdownItem}><a href="#gallery">Gallery</a></li>
-                  <li className={styles.HamburgerDropdownItem}><a href="#pricing">Pricing</a></li>
+                  <li className={styles.HamburgerDropdownItem}><a href="#contact">Pricing</a></li>
                   <li className={`${styles.HamburgerDropdownItem} ${styles.HamburgerDropdownItemContact}`}><a href="#contact">Contact</a></li>
                 </ul>
               </nav>
@@ -232,7 +233,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.AboutContainer} ref={aboutContainerRef}>
+        <section className={styles.AboutContainer} ref={aboutContainerRef} id="about">
+          <div className={styles.svgContainer}>
+            {/* <PageSvg /> */}
+          </div>
           <div className={styles.PFPContainer} ref={pfpRef}></div>
           <div className={styles.AboutTextContainer} ref={aboutTextContainerRef}>
             <div className={styles.AboutTextName}>
@@ -248,7 +252,10 @@ export default function Home() {
           <ReviewsSection />
         </section>
         
-        <section className={styles.ServicesContainer}>
+        <section className={styles.ServicesContainer} id="services">
+          {/* <div className={styles.svgContainer}>
+            <PageSvg />
+          </div> */}
           <div className={styles.ServiceTitleContainer}>
             <h2 className={styles.ServiceTitle}>Services</h2>
           </div>
@@ -274,7 +281,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.GalleryContainer}>
+        <section className={styles.GalleryContainer} id="gallery">
           <div className={styles.GalleryTitleContainer}>
             <h2 className={styles.GalleryTitle} ref={galleryTitleRef}>Gallery</h2>
           </div>
