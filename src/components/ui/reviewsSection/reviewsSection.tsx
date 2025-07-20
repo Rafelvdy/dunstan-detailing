@@ -7,35 +7,35 @@ const reviewsData = [
   {
     id: 1,
     customerName: "Jack Sutliff",
-    reviewText: "Luke did a great job on my company van couldn’t be happier with the results would recommend to anyone and everyone. Honest, friendly and all round great guy thanks again for the work will definitely be using again",
+    reviewText: "Luke did a great job on my company van couldn't be happier with the results would recommend to anyone and everyone. ",
     rating: 5,
     serviceType: "Full Detail"
   },
   {
     id: 2,
     customerName: "Lukha Singh",
-    reviewText: "Best in business!!! Luke goes above and beyond for his customers and takes great pride in his work. Been using Dunstan detailing for two years now and wouldn’t work with anyone else.",
+    reviewText: "Luke goes above and beyond for his customers and takes great pride in his work.",
     rating: 5,
     serviceType: "Full Detail"
   },
   {
     id: 3,
     customerName: "Mark Tristem",
-    reviewText: "How refreshing to find someone as passionate in his work as Luke. My 6 year old black car had marks on it that I thought would never come out but after Luke worked his magic you could shave in the gloss reflection he produced! Both inside and out now look like it's just come off the production line with valuable advice on how to maintain it. Delighted - Thanks so much.",
+    reviewText: "My 6 year old black car had marks on it that I thought would never come out but after Luke worked his magic you could shave in the gloss reflection he produced!",
     rating: 5,
     serviceType: "Full Detail"
   },
   {
     id: 4,
     customerName: "Susan Bevan",
-    reviewText: "I would give more stars if I could. Luke worked miracles on my 20 yr old dull black civic. He is a perfectionist ,taking great care and attention to detail. Hard working , friendly, and helpful. I will 100% be a regular customer from now on.",
+    reviewText: "Luke worked miracles on my 20 yr old dull black civic. He is a perfectionist ,taking great care and attention to detail.",
     rating: 5,
     serviceType: "Full Detail"
   },
   {
     id: 5,
     customerName: "Peter P",
-    reviewText: "I am consistently impressed with the quality of service provided by Luke. The attention to detail is remarkable, leaving no spot untouched. From the exterior wash to the interior vacuuming and polishing, the consistently exceeds my expectations. He is friendly, professional, and genuinely cares about the results he delivers. I appreciate his commitment to using high-quality products that leave my car shining and protected",
+    reviewText: "The attention to detail is remarkable, leaving no spot untouched. He is friendly, professional, and genuinely cares about the results he delivers.",
     rating: 5,
     serviceType: "Full Detail"
   }
