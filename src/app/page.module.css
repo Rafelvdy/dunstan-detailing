@@ -2,113 +2,7 @@
     background: #2C2C2C;
 }
 
-.MobileNavBar {
-    /* background: lightgrey; */
-    height: 60px;
-    width: 100%;
-    display: flex;
-    position: fixed;
-    z-index: 100;
-}
 
-.MobileNavBarHidden {
-    display: none;
-} 
-
-.MobileNavBarVisible {
-    display: flex;
-}
-
-
-.MobileNavBarLeft {
-    width: 50%;
-    height: 100%;
-    /* background: red; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.4rem;
-}
-
-.MobileNavLogo {
-    width: 100%;
-    height: 70%;
-    /* filter: invert(1); */
-    margin-left: 10px;
-}
-
-.MobileNavBarRight {
-    width: 50%;
-    height: 100%;
-    /* background: blue; */
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.HamburgerMenuContainer {
-    margin-right: 20px;
-    position: relative; /* Creates positioning context */
-  }
-  
-  .HamburgerDropdown {
-    position: absolute;
-    top: 100%; /* Appears directly below the container */
-    margin-top: 20px;
-    right: 0;   /* Aligns with right edge of hamburger */
-    min-width: 110px;
-    height: 0px;
-    background: #ededed;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    color: var(--background);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: height 0.3s ease, border 0.3s ease;
-    
-  }
-
-  .HamburgerDropdownOpen {
-    height: 280px;
-    border: 2px solid #6631d7;
-    filter: drop-shadow(0 0 10px rgba(102, 49, 215, 0.5));
-  }
-  .HamburgerDropdownNav {
-    overflow: hidden;
-  }
-
-  .HamburgerDropdownItem {
-    text-align: center;
-    padding: 0.5rem 0;
-    /* color: #6631d7; */
-    color: black;
-    font-weight: 600;
-    position: relative;
-  }
-
-  .HamburgerDropdownItem:not(.HamburgerDropdownItemContact)::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 10%;
-    width: 80%;
-    height: 1px;
-    background: rgba(211, 211, 211, 0.498);
-  }
-
-.HamburgerDropdownItemContact {
-    background: black;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    color: white;
-    font-weight: 600;
-    font-family: "montserrat";
-    margin-top: 15px;
-}
 
 
 
@@ -152,6 +46,7 @@
     margin-top: 50px;
     position: relative;
     z-index: 3;
+    background: red;
 }
 
 .HeroSubtitle {
@@ -211,9 +106,6 @@
     }
 }
 
-@media (min-width: 2560px) {
-}
-
 
 .HeroTitleContainer {
     width: 100%;
@@ -222,6 +114,7 @@
     padding: 0rem 1rem;
     position: relative;
     z-index: 3;
+    background: blue;
 }
 
 .HeroTitle {
