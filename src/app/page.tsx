@@ -2,6 +2,7 @@
 import styles from "./page.module.css"; 
 //Importing Pages
 import Hero from "@/components/sections/hero/hero";
+import Company from "@/components/sections/company/company";
 // import ServiceCard from "@/components/ui/serviceCard/serviceCard";
 import ServiceCardThin from "@/components/ui/serviceCard/serviceCardThin";
 import GalleryCard from "@/components/ui/galleryCard/galleryCard";
@@ -129,10 +130,11 @@ export default function Home() {
       
       <main className={styles.PageContainer} id="home">
         <Hero />
+        <Company />
 
-        <section className={styles.AboutContainer} ref={aboutContainerRef} id="about">
+        {/* <section className={styles.AboutContainer} ref={aboutContainerRef} id="about">
           <div className={styles.svgContainer}>
-            {/* <PageSvg /> */}
+        
           </div>
           <div className={styles.PFPContainer} ref={pfpRef}></div>
           <div className={styles.AboutTextContainer} ref={aboutTextContainerRef}>
@@ -147,7 +149,7 @@ export default function Home() {
             </div>
           </div>  
           <ReviewsSection />
-        </section>
+        </section> */}
         
         <section className={styles.ServicesContainer} id="services">
           {/* <div className={styles.svgContainer}>

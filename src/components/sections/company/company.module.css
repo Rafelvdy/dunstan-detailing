@@ -1,0 +1,32 @@
+.CompanyContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.CompanyTitle {
+    font-family: "montserrat";
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.CompanyText {
+    font-family: "roboto";
+    text-align: center;
+    width: 85%;
+    letter-spacing: 0.5px;
+    line-height: 1.7;
+    background: rgb(54, 50, 50);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.7);
+}
+

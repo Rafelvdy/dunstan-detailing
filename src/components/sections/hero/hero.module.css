@@ -194,6 +194,7 @@
     font-weight: 600;
     width: 95%;
     z-index: 2;
+    color: white;
     /* margin-top: 20px; */
 }
 
@@ -201,6 +202,7 @@
     position: relative;
     font-family: "roboto";
     background: linear-gradient(120deg, #7d4be9, #8f7fee);
+    color: white;
     padding: 8px 20px;
     border-radius: 10px;
     font-size: 20px;
