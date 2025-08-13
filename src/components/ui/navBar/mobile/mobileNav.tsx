@@ -1,8 +1,9 @@
+"use client";
 import styles from "./mobileNav.module.css"
 import {HamburgerMenu} from "@/components/ui/hamburgerMenu"
 import { useState } from "react";
 
-const mobileNav = () => {
+const MobileNav = () => {
   const [open, setOpen] = useState<boolean>(false);
 
     return (
@@ -65,4 +66,4 @@ const mobileNav = () => {
     )
 }
 
-export default mobileNav;
+export default MobileNav;

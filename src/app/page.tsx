@@ -8,13 +8,13 @@ import GalleryCard from "@/components/ui/galleryCard/galleryCard";
 import DeskNav from "@/components/ui/navBar/desktop/deskNav";
 import MobileNav from "@/components/ui/navBar/mobile/mobileNav";
 import ReviewsSection from "@/components/ui/reviewsSection";
-import PageSvg from "@/components/svg/pageSVG";
+// import PageSvg from "@/components/svg/pageSVG";
 import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
-import Image from "next/image";
+// import Image from "next/image";
 // import Link from "next/link";
 
 gsap.registerPlugin(SplitText);
@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Home() {
   
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [isFontLoaded, setIsFontLoaded] = useState<boolean>(false);
+  // const [isFontLoaded, setIsFontLoaded] = useState<boolean>(false);
   
   
   const pfpRef = useRef<HTMLDivElement>(null);
@@ -115,7 +115,7 @@ export default function Home() {
       })
 
     
-  }, [isFontLoaded]); 
+  }, []); 
 
 
 
