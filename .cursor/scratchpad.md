@@ -1,3 +1,90 @@
+Background and Motivation
+The hero section uses a video that should be 100% width within its container and vertically centered, with the top and bottom cropped when the video’s height exceeds the container height. Currently, CSS forces a portrait aspect ratio and lacks container overflow control, leading to inconsistent cropping/centering behavior.
+
+Key Challenges and Analysis
+- The element `.HeroVideo` has `aspect-ratio: 9/16`, which forces a portrait frame irrespective of the actual media. This can create excessive height and unexpected overflow.
+- The container `.HeroVideoContainer` has a fixed `height: 300px` but no `overflow: hidden`. This allows the video element to extend beyond the container rather than be cleanly cropped.
+- `object-fit: cover` is applied on the video, but because the video element itself isn’t constrained to the container’s height (no `height: 100%` or positioning), the effect can be misleading.
+- Desired behavior: width fills the container; if the video is taller than the container, crop top/bottom equally and keep content centered.
+
+High-level Task Breakdown
+1) Implement minimal CSS changes to achieve behavior (Option A: Flex + Overflow Hidden)
+   - Remove `aspect-ratio` from `.HeroVideo`.
+   - Add `overflow: hidden; position: relative; display: flex; align-items: center;` to `.HeroVideoContainer`.
+   - Keep `.HeroVideo { width: 100%; height: auto; display: block; }` so width is authoritative and vertical centering is handled by flex.
+   - Success: Video fills width, remains centered vertically, top/bottom are cropped symmetrically when taller than the container.
+
+2) Alternative (Option B: object-fit cover with explicit height)
+   - `.HeroVideoContainer { overflow: hidden; position: relative; }`
+   - `.HeroVideo { width: 100%; height: 100%; object-fit: cover; }`
+   - Success: Same visual result, relies on explicit element height instead of flex centering.
+
+3) Fallback (Option C: Absolute center + min-dimensions)
+   - Absolute center the video and use `min-width: 100%; min-height: 100%` to guarantee coverage.
+   - Success: Robust across odd cases; slightly more CSS.
+
+4) Responsiveness pass
+   - If needed, adjust `.HeroVideoContainer` height responsively, e.g., `height: clamp(240px, 40vw, 520px)`.
+   - Success: Good look across mobile/desktop without manual pixel tweaks.
+
+Project Status Board
+- [ ] Decide between Option A (flex) and Option B (object-fit with explicit height)
+- [ ] Implement chosen option in `src/components/sections/hero/hero.module.css`
+- [ ] Verify at common breakpoints (mobile, tablet, desktop)
+- [ ] Optional: make container height responsive
+
+Current Status / Progress Tracking
+- Analysis complete. Root causes identified (`aspect-ratio: 9/16` on `.HeroVideo`, missing `overflow: hidden` on container). Ready to implement minimal-change Option A.
+
+Executor's Feedback or Assistance Requests
+- Confirm preferred approach:
+  - Option A (flex + overflow hidden, width 100%, height auto) — minimal, readable.
+  - Option B (object-fit cover with explicit height: 100%) — also minimal, ties video box to container height directly.
+- Confirm whether to keep container height fixed at 300px or switch to a responsive height (e.g., `clamp(240px, 40vw, 520px)`).
+
+Lessons
+- Avoid forcing `aspect-ratio` on media elements unless the intent is to impose a synthetic frame; prefer letting intrinsic media ratio drive sizing and let the container control cropping.
+- For predictable cropping, set the container to `overflow: hidden` and then either flex-center the media or use `height: 100%` with `object-fit: cover`.
+
+—
+
+New Task: Make the text area under the hero video have a white background
+
+Key Constraints and Observations
+- Current markup places the title in `.HeroTitle` and the button inside `.HeroContactButtonContainer` (unstyled). No dedicated wrapper for both exists, so creating a single white band may be easier with a wrapper.
+- Minimal-change approach can style existing blocks without JSX changes, but a wrapper yields cleaner structure and fewer repeated styles.
+
+Options
+1) Minimal (no JSX changes):
+   - Add `background: #fff;` to `.HeroTitle` and also style `.HeroContactButtonContainer` with the same background to read as one band.
+   - Add spacing: `padding` and perhaps `border-top` to visually separate from the video.
+   - Success: The area under the video where text lives appears with a white background.
+
+2) Clean structure (small JSX change):
+   - Wrap `.HeroTitle` and `.HeroContactButtonContainer` in a new `div` named `.HeroTextArea`.
+   - CSS for `.HeroTextArea`: `background: #fff; width: 100%;` plus `padding` and optional `border-radius`.
+   - Success: A single white band below the video containing both title and button, simpler to maintain.
+
+3) Section-level approach:
+   - If the entire area below `.HeroVideoContainer` should be white, set a white background on a sibling block spanning full width.
+   - Success: Clear separation; use if more content is planned beneath the video.
+
+Recommended
+- Option 2 for maintainability. If you prefer zero JSX edits, Option 1 works.
+
+Success Criteria
+- The visible area directly below the video containing the title and button shows a solid white background across mobile and desktop widths.
+
+Project Status Board
+- [ ] Choose Option 1 (CSS-only) or Option 2 (wrapper + CSS)
+- [ ] Implement CSS and verify spacing, contrast, and readability
+
+Executor's Feedback or Assistance Requests
+- Confirm preferred option (1: CSS-only, 2: wrapper), desired padding (e.g., 16–24px), and whether the white band should be full-width or constrained.
+
+Lessons
+- Grouping related UI into a wrapper simplifies styling repeated backgrounds and spacing compared to styling individual items.
+
 # Dunstan Detailing - ReviewCard Component Enhancement
 
 ## Background and Motivation

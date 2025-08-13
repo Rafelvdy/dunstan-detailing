@@ -1,5 +1,7 @@
 "use client";
 import styles from "./page.module.css"; 
+//Importing Pages
+import Hero from "@/components/sections/hero/hero";
 // import ServiceCard from "@/components/ui/serviceCard/serviceCard";
 import ServiceCardThin from "@/components/ui/serviceCard/serviceCardThin";
 import GalleryCard from "@/components/ui/galleryCard/galleryCard";
@@ -21,10 +23,9 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Home() {
   
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const heroTitleRef = useRef<HTMLDivElement>(null);
-  const heroSubtitleRef = useRef<HTMLDivElement>(null);
-  const heroContactButtonRef = useRef<HTMLDivElement>(null);
   const [isFontLoaded, setIsFontLoaded] = useState<boolean>(false);
+  
+  
   const pfpRef = useRef<HTMLDivElement>(null);
   const aboutTextContainerRef = useRef<HTMLDivElement>(null);
   const exampleImageRef = useRef<HTMLDivElement>(null);
@@ -32,7 +33,6 @@ export default function Home() {
   const serviceCard1Ref = useRef<HTMLDivElement>(null);
   const serviceCard2Ref = useRef<HTMLDivElement>(null);
   const serviceCard3Ref = useRef<HTMLDivElement>(null);
-  const heroImageRef = useRef<HTMLImageElement>(null);
   const galleryTitleRef = useRef<HTMLDivElement>(null);
 
 
@@ -47,71 +47,16 @@ export default function Home() {
     return () => { window.removeEventListener('resize', handleResize); }
   }, []);
 
-  useEffect(() => {
-    document.fonts.ready.then(() => {
-      setIsFontLoaded(true);
-    });
-  }, []);
+  
 
 
   useEffect(() => {
     //Hero page animations
-    if (isFontLoaded && heroTitleRef.current && heroSubtitleRef.current) {
-      const heroTitleSplit = SplitText.create(heroTitleRef.current, {
-          type: "lines",
-          linesClass: "line",
-          autoSplits: true,   
-      });
-
       const galleryTitleSplit = SplitText.create(galleryTitleRef.current, {
         type: "lines",
         linesClass: "line",
         autoSplits: true,
         mask: "lines",
-    });
-
-      const heroSubtitleSplit = SplitText.create(heroSubtitleRef.current, {
-        type: "lines",
-        linesClass: "line",
-        autoSplits: true,
-      });
-
-      gsap.set(heroTitleSplit.lines, {
-        y: 50,
-        opacity: 0,
-      });
-
-      gsap.set(heroSubtitleSplit.lines, {
-        y: 50,
-        opacity: 0,
-      });
-
-      gsap.set(heroImageRef.current, {
-        y: 50,
-        opacity: 0,
-      })
-
-      gsap.to(heroTitleSplit.lines, {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.inOut",
-        stagger: 0.2,
-      });
-
-      gsap.to(heroSubtitleSplit.lines, {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.inOut",
-        stagger: 0.1,
-      });
-
-      gsap.to(heroImageRef.current, {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.inOut",
       });
 
       //About page animations
@@ -169,8 +114,8 @@ export default function Home() {
         ease: "power2.out",
       })
 
-    };
-  }, [isFontLoaded]); // Added empty dependency array
+    
+  }, [isFontLoaded]); 
 
 
 
@@ -183,30 +128,7 @@ export default function Home() {
 
       
       <main className={styles.PageContainer} id="home">
-        <section className={styles.HeroContainer}>
-          <div className={styles.GridBackgroundContainer}></div>
-          <div className={styles.HeroTitleContainer}>
-            <div className={styles.HeroTitle} ref={heroTitleRef}>
-              <h1 className={styles.HeroTitleText}>Premium Car Detailing that <span className={styles.HeroTitleTextHighlight}>SHINES</span> above the Rest.</h1>
-            </div>
-          </div>
-          <div className={styles.HeroSubtitleContainer}>
-            <div className={styles.HeroSubtitle} ref={heroSubtitleRef}>
-              {isFontLoaded && (
-                <ul>
-                  <li className={styles.HeroSubtitleItem}>Prep.</li>
-                  <li className={styles.HeroSubtitleItem}>Polish.</li>
-                  <li className={styles.HeroSubtitleItem}>Protect.</li>
-                </ul>
-              )}
-            </div>
-            <div className={styles.HeroContactButtonContainer} ref={heroContactButtonRef}>
-              {isFontLoaded && (
-                <button className={styles.HeroContactButton}>Contact</button>
-              )}
-            </div>
-          </div>
-        </section>
+        <Hero />
 
         <section className={styles.AboutContainer} ref={aboutContainerRef} id="about">
           <div className={styles.svgContainer}>
