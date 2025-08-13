@@ -166,6 +166,7 @@
     margin-top: 0;
     background: transparent;
     z-index: 0;
+    height: 100%;
 }
 
 .HeroVideoContainer::after {
@@ -189,10 +190,9 @@
 .HeroTitle {
     font-size: 38px;
     text-align: center;
-    width: 100%;
     font-family: "montserrat";
     font-weight: 600;
-    width: 95%;
+    width: 360px;
     z-index: 2;
     color: white;
     /* margin-top: 20px; */
@@ -210,4 +210,63 @@
     letter-spacing: 0.5px;
     z-index: 2;
     /* margin-top: 20px; */
+}
+
+@media (min-width: 600px) {
+    .HeroContainer {
+        gap: 60px;
+    }
+    .HeroTitle {
+        font-size: 48px;
+        width: 450px;
+    }
+
+    .HeroContactButton {
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .HeroContainer {
+        display: grid;
+        grid-template-areas:
+            "title video"
+            "button video";
+        grid-template-columns: 1fr 0.75fr;
+        grid-template-rows: 1fr 1fr;
+        place-items: center;
+        gap: 0;
+    }
+
+    .HeroTitle {
+        grid-area: title;
+        align-self: flex-end;
+        font-size: 52px;
+        width: 500px;
+    }
+
+    .HeroVideoContainer {
+        position: relative;
+        grid-area: video;
+        place-self: center;
+        border-radius: 10px;
+        height: 90%;
+    }
+
+    .HeroContactButtonContainer {
+        grid-area: button;
+        align-self: flex-start;
+        margin-top: 80px;
+    }
+
+    .HeroContactButton {
+        font-size: 28px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .HeroTitle {
+        font-size: 62px;
+        width: 580px;
+    }
 }

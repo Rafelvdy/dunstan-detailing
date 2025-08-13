@@ -39,7 +39,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 1023);
     }
 
     handleResize();
@@ -132,25 +132,6 @@ export default function Home() {
         <Hero />
         <Company />
         <ReviewsSection />
-
-        {/* <section className={styles.AboutContainer} ref={aboutContainerRef} id="about">
-          <div className={styles.svgContainer}>
-        
-          </div>
-          <div className={styles.PFPContainer} ref={pfpRef}></div>
-          <div className={styles.AboutTextContainer} ref={aboutTextContainerRef}>
-            <div className={styles.AboutTextName}>
-              <h2>Luke Dunstan</h2>
-            </div>
-            <div className={styles.AboutTextExperience}>
-              <h3>X+ years of experience, x amount of cars detailed</h3>
-            </div>
-            <div className={styles.AboutTextBrief}>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-            </div>
-          </div>  
-          <ReviewsSection />
-        </section> */}
         
         <section className={styles.ServicesContainer} id="services">
           {/* <div className={styles.svgContainer}>

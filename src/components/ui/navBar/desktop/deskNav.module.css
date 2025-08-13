@@ -21,6 +21,7 @@
     margin-right: 20px;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 0 8px 5px rgba(0, 0, 0, 0.4);
 }
 
 .DesktopNavBarList {
@@ -45,7 +46,7 @@
 }
 
 .DesktopNavBarItem:hover {
-    color: #6631d7;
+    color: rgba(255, 255, 255, 0.8);
     transform: scale(1.05);
 }
 
