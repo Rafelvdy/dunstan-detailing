@@ -131,6 +131,7 @@ export default function Home() {
       <main className={styles.PageContainer} id="home">
         <Hero />
         <Company />
+        <ReviewsSection />
 
         {/* <section className={styles.AboutContainer} ref={aboutContainerRef} id="about">
           <div className={styles.svgContainer}>
