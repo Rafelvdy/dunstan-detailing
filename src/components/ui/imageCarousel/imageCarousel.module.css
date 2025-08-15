@@ -1,6 +1,40 @@
 .carousel {
-    width: 270px;
-    height: 370px;
+    width: 70%;
+    max-width: 400px;
+    /* height: 370px; */
+    border-radius: 10px;
+}
+
+.carouselContent {
+    margin-left: -8px;
+}
+
+.carouselItem {
+    padding-left: 8px;
+    box-sizing: border-box;
+}
+
+.DesktopCarousel {
+    flex: 0 0 calc(100% / 3);
+    max-width: calc(100% / 3);
+}
+
+.carouselImage {
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+    .carouselContent {
+        margin-left: -16px;
+    }
+    .carouselItem {
+        padding-left: 16px;
+    }
+    .carousel {
+        max-width: 1200px;
+        width: 80%;
+    }
 }
 
 .carouselImage {
