@@ -3,13 +3,13 @@ import styles from "./page.module.css";
 //Importing Pages
 import Hero from "@/components/sections/hero/hero";
 import Company from "@/components/sections/company/company";
-// import ServiceCard from "@/components/ui/serviceCard/serviceCard";
+import Gallery from "@/components/sections/gallery/gallery";
+
 import ServiceCardThin from "@/components/ui/serviceCard/serviceCardThin";
-import GalleryCard from "@/components/ui/galleryCard/galleryCard";
 import DeskNav from "@/components/ui/navBar/desktop/deskNav";
 import MobileNav from "@/components/ui/navBar/mobile/mobileNav";
 import ReviewsSection from "@/components/ui/reviewsSection";
-// import PageSvg from "@/components/svg/pageSVG";
+
 import { useRef, useState } from "react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
@@ -132,6 +132,7 @@ export default function Home() {
         <Hero />
         <Company />
         <ReviewsSection />
+        <Gallery />
         
         <section className={styles.ServicesContainer} id="services">
           {/* <div className={styles.svgContainer}>
@@ -161,21 +162,6 @@ export default function Home() {
             />
           </div>
         </section>
-
-        <section className={styles.GalleryContainer} id="gallery">
-          <div className={styles.GalleryTitleContainer}>
-            <h2 className={styles.GalleryTitle} ref={galleryTitleRef}>Gallery</h2>
-          </div>
-          <GalleryCard index={1} isMobile={isMobile}/>
-          <GalleryCard index={2} isMobile={isMobile}/>
-          <GalleryCard index={3} isMobile={isMobile}/>
-          <GalleryCard index={4} isMobile={isMobile}/>
-          <GalleryCard index={5} isMobile={isMobile}/>
-          <GalleryCard index={6} isMobile={isMobile}/>
-          </section> 
-
-          
-
       </main>
     </>
   );
