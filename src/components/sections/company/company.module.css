@@ -21,6 +21,7 @@
     font-family: "roboto";
     text-align: center;
     width: 85%;
+    max-width: 450px;
     letter-spacing: 0.5px;
     line-height: 1.7;
     background: rgb(54, 50, 50);
@@ -28,5 +29,27 @@
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
     padding: 20px;
     color: rgba(255, 255, 255, 0.7);
+}
+
+@media (min-width: 600px) {
+    .CompanyText {
+        max-width: 600px;
+        font-size: 16px;
+    }
+
+    .CompanyTitle {
+        font-size: 38px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .CompanyText {
+        max-width: 700px;
+        font-size: 22px;
+    }
+
+    .CompanyTitle {
+        font-size: 48px;
+    }
 }
 

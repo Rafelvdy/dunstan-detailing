@@ -25,37 +25,37 @@ export default function ImageCarousel() {
         <Carousel className={styles.carousel}>
             <CarouselContent className={styles.carouselContent}>
                 <CarouselItem className={`${styles.carouselItem} ${isDesktop ? styles.DesktopCarousel : ''}`}>
-                    <Image src="/images/gallery-image-1.jpg" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
+                    <Image src="/images/gallery-image-1.webp" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
                 </CarouselItem>
                 <CarouselItem className={`${styles.carouselItem} ${isDesktop ? styles.DesktopCarousel : ''}`}>
-                    <Image src="/images/gallery-image-2.jpg" alt="image 2" width={1000} height={1000} className={styles.carouselImage} />
+                    <Image src="/images/gallery-image-2.webp" alt="image 2" width={1000} height={1000} className={styles.carouselImage} />
                 </CarouselItem>
                 <CarouselItem className={`${styles.carouselItem} ${isDesktop ? styles.DesktopCarousel : ''}`}>
-                    <Image src="/images/gallery-image-3.jpg" alt="image 3" width={1000} height={1000} className={styles.carouselImage} />
+                    <Image src="/images/gallery-image-3.webp" alt="image 3" width={1000} height={1000} className={styles.carouselImage} />
                 </CarouselItem>
                 <CarouselItem className={`${styles.carouselItem} ${isDesktop ? styles.DesktopCarousel : ''}`}>
-                    <Image src="/images/gallery-image-4.jpg" alt="image 4" width={1000} height={1000} className={styles.carouselImage} />
+                    <Image src="/images/gallery-image-4.webp" alt="image 4" width={1000} height={1000} className={styles.carouselImage} />
                 </CarouselItem>
                 <CarouselItem className={`${styles.carouselItem} ${isDesktop ? styles.DesktopCarousel : ''}`}>
-                    <Image src="/images/gallery-image-5.jpg" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
+                    <Image src="/images/gallery-image-5.webp" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
                 </CarouselItem>
                 <CarouselItem className={`${styles.carouselItem} ${isDesktop ? styles.DesktopCarousel : ''}`}>
-                    <Image src="/images/gallery-image-6.jpg" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
+                    <Image src="/images/gallery-image-6.webp" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
                 </CarouselItem>
                 <CarouselItem className={`${styles.carouselItem} ${isDesktop ? styles.DesktopCarousel : ''}`}>
-                    <Image src="/images/gallery-image-7.jpg" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
+                    <Image src="/images/gallery-image-7.webp" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
                 </CarouselItem>
                 <CarouselItem className={`${styles.carouselItem} ${isDesktop ? styles.DesktopCarousel : ''}`}>
-                    <Image src="/images/gallery-image-8.png" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
+                    <Image src="/images/gallery-image-8.webp" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
                 </CarouselItem>
                 <CarouselItem className={`${styles.carouselItem} ${isDesktop ? styles.DesktopCarousel : ''}`}>
-                    <Image src="/images/gallery-image-9a.jpg" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
+                    <Image src="/images/gallery-image-9a.webp" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
                 </CarouselItem>
                 <CarouselItem className={`${styles.carouselItem} ${isDesktop ? styles.DesktopCarousel : ''}`}>
-                    <Image src="/images/gallery-image-9b.jpg" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
+                    <Image src="/images/gallery-image-9b.webp" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
                 </CarouselItem>
                 <CarouselItem className={`${styles.carouselItem} ${isDesktop ? styles.DesktopCarousel : ''}`}>
-                    <Image src="/images/gallery-image-10.png" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
+                    <Image src="/images/gallery-image-10.webp" alt="image 1" width={1000} height={1000} className={styles.carouselImage} />
                 </CarouselItem>
             </CarouselContent>
             <CarouselPrevious />
