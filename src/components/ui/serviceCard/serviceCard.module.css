@@ -10,6 +10,14 @@
     overflow: hidden;
 }
 
+.ServiceCardHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
 .ServiceCardTitle {
     grid-area: title;
     display: flex;
@@ -22,6 +30,30 @@
     color: white;
 }
 
+.ServiceCardToggle {
+    margin-left: auto;
+    font-family: "montserrat";
+    font-weight: 500;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.ServiceCardToggle:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.ServiceCardToggle:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 2px;
+}
+
 .ServiceCardContents {
     grid-area: contents;
     display: flex;
@@ -32,6 +64,16 @@
     font-size: 15px;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
+    overflow: hidden;
+    transition: max-height 300ms ease;
+}
+
+.ServiceCardContents[data-expanded="true"] {
+    max-height: 1000px;
+}
+
+.ServiceCardContents[data-expanded="false"] {
+    max-height: 0px;
 }
 
 .ServiceCardContentsList {

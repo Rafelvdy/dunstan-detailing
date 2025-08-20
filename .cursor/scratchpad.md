@@ -291,3 +291,87 @@ Lessons
 - Marquee scrolling performance is maintained or improved ✅
 - **NEW**: Cards automatically adjust height to content length ✅
 - **NEW**: Visual consistency maintained through minimum height constraints ✅ 
+
+
+—
+
+# ServiceCard Show More / Show Less Toggle
+
+## Background and Motivation
+
+Service descriptions can be lengthy and currently display in full, which creates visual clutter and pushes important information (like pricing) down the page. A per-card collapsible section with a Show more / Show less toggle will keep the layout compact while allowing users to reveal details on demand.
+
+## Key Challenges and Analysis
+
+- The existing `ServiceCard` is a simple presentational component without state. It renders `title`, `contents` (array of strings), and `price`.
+- We need a clean, accessible, and performant collapse/expand pattern without layout jumps.
+- Height animation for unknown content height is tricky. Animating `height` from `0` to `auto` is not directly supported. Two pragmatic choices:
+  - CSS `max-height` with a sufficiently large value plus `overflow: hidden` and a `transition` on `max-height`.
+  - JS-measured height (using `scrollHeight`) and inline styles. This is more precise but introduces extra code/refs.
+- The toggle should sit to the right of the title, read clearly, and be keyboard and screen-reader accessible (`<button>` with `aria-expanded`, `aria-controls`).
+- Maintain visual appeal: subtle transition, spacing that looks intentional, and a clear affordance (text plus caret/chevron if available).
+
+## Recommended Approach
+
+- Local state per `ServiceCard` with `useState<boolean>` for `isExpanded` (default: `false`). Keeps concerns contained; parent (`Services`) remains unchanged.
+- Title row wrapper `ServiceCardHeader` using flex to place the title left and the toggle button right.
+- Content container gets two modifier classes: `expanded` and `collapsed`, implemented via `max-height` transition and `overflow: hidden`. Use a conservative large `max-height` (e.g., `max-height: 1000px`) to cover longest content.
+- Add `aria-expanded` on the button and `id`/`aria-controls` wiring for accessibility. Button text toggles between "Show more" and "Show less".
+- Keep `price` always visible underneath the contents so pricing remains discoverable whether collapsed or expanded.
+
+## High-level Task Breakdown
+
+1) Structure updates in `src/components/ui/serviceCard/serviceCard.tsx`
+   - Add `isExpanded` state and `toggle` handler.
+   - Wrap title and toggle in a new header container: `div.ServiceCardHeader`.
+   - Add a `button.ServiceCardToggle` to the right of the title with proper ARIA attributes.
+   - Apply `expanded`/`collapsed` classes to the contents container based on state.
+   - Success: Clicking the button toggles state and updates button label and ARIA attributes.
+
+2) Styling in `src/components/ui/serviceCard/serviceCard.module.css`
+   - Add `.ServiceCardHeader` (flex row, space-between, center-aligned).
+   - Style `.ServiceCardToggle` (minimal, brand-consistent; no default button chrome; hover/active states; focus ring visible).
+   - Animate contents via `.ServiceCardContents` + modifiers:
+     - Base: `overflow: hidden; transition: max-height 300ms ease; will-change: max-height;`
+     - `.expanded { max-height: 1000px; }`
+     - `.collapsed { max-height: 0; }`
+   - Ensure list spacing remains good when collapsed (avoid extra bottom margin bleeding). Optionally use a gradient fade if desired later.
+   - Success: Smooth open/close animation with no layout jump and tidy spacing.
+
+3) Accessibility and semantics
+   - Use a semantic `<button>`, not a `div`.
+   - Add `aria-expanded`, `aria-controls` linking to the contents container `id`.
+   - Keyboard operable and visible focus outline.
+   - Success: Toggle is accessible and state is announced to screen readers.
+
+4) Testing (lightweight)
+   - Write a React Testing Library test (if testing infra exists) that:
+     - Renders a `ServiceCard` with >3 items, verifies contents container is collapsed by default (e.g., has `collapsed` class).
+     - Clicks toggle and expects `expanded` class and visible items.
+     - Clicks again and expects collapse.
+   - If no test infra, perform manual checks across breakpoints.
+   - Success: Behavior verified programmatically or manually.
+
+## Project Status Board
+
+- [x] Update structure/state in `serviceCard.tsx`
+- [x] Add and refine CSS in `serviceCard.module.css`
+- [ ] Manual visual QA: mobile, tablet, desktop
+- [ ] Optional: Add automated tests if infra present
+
+## Current Status / Progress Tracking
+
+- Step 1 implemented: added `isExpanded` state, header row with toggle button, ARIA wiring, and content container modifiers.
+- CSS added: header layout, toggle button styling, and `max-height` transition with `data-expanded` attribute.
+
+## Executor's Feedback or Assistance Requests
+
+- Confirm button text preference:
+  - Option A: "Show more" / "Show less"
+  - Option B: Add chevron (CSS pseudo-element) that rotates on toggle
+- Confirm default state per card (collapsed by default recommended). Any card(s) you want expanded by default?
+
+## Lessons
+
+- For simple collapses, CSS `max-height` transitions are clean and performant enough without measurement refs.
+- Use semantic buttons with ARIA to keep toggles obvious and accessible.

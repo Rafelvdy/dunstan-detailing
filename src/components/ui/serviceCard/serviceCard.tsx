@@ -1,4 +1,7 @@
+"use client"
+
 import styles from "./serviceCard.module.css"
+import { useId, useState } from "react"
 
 interface ServiceCardProps {
     title: string;
@@ -7,12 +10,33 @@ interface ServiceCardProps {
 }
 
 export default function ServiceCard({ title, contents, price }: ServiceCardProps) {
+    const [isExpanded, setIsExpanded] = useState(false)
+    const contentId = useId()
+
+    const handleToggle = () => setIsExpanded((prev) => !prev)
+
     return (
         <div className={styles.ServiceCard}>
-            <div className={styles.ServiceCardTitle}>
-                <h3>{title}</h3>
+            <div className={styles.ServiceCardHeader}>
+                <div className={styles.ServiceCardTitle}>
+                    <h3>{title}</h3>
+                </div>
+                <button
+                    type="button"
+                    className={styles.ServiceCardToggle}
+                    aria-expanded={isExpanded}
+                    aria-controls={`service-contents-${contentId}`}
+                    onClick={handleToggle}
+                >
+                    {isExpanded ? "Show less" : "Show more"}
+                </button>
             </div>
-            <div className={styles.ServiceCardContents}>
+            <div
+                className={styles.ServiceCardContents}
+                id={`service-contents-${contentId}`}
+                data-expanded={isExpanded}
+                aria-hidden={!isExpanded}
+            >
                 <ol className={styles.ServiceCardContentsList}>
                     {contents.map((content, index) => (
                         <li key={index}>{content}</li>
