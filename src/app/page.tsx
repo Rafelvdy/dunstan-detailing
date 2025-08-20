@@ -4,8 +4,8 @@ import styles from "./page.module.css";
 import Hero from "@/components/sections/hero/hero";
 import Company from "@/components/sections/company/company";
 import Gallery from "@/components/sections/gallery/gallery";
+import Services from "@/components/sections/services/services";
 
-import ServiceCardThin from "@/components/ui/serviceCard/serviceCardThin";
 import DeskNav from "@/components/ui/navBar/desktop/deskNav";
 import MobileNav from "@/components/ui/navBar/mobile/mobileNav";
 import ReviewsSection from "@/components/ui/reviewsSection";
@@ -31,9 +31,7 @@ export default function Home() {
   const aboutTextContainerRef = useRef<HTMLDivElement>(null);
   const exampleImageRef = useRef<HTMLDivElement>(null);
   const aboutContainerRef = useRef<HTMLDivElement>(null);
-  const serviceCard1Ref = useRef<HTMLDivElement>(null);
-  const serviceCard2Ref = useRef<HTMLDivElement>(null);
-  const serviceCard3Ref = useRef<HTMLDivElement>(null);
+  
   const galleryTitleRef = useRef<HTMLDivElement>(null);
 
 
@@ -132,36 +130,10 @@ export default function Home() {
         <Hero />
         <Company />
         <ReviewsSection />
+        <Services />
         <Gallery />
         
-        <section className={styles.ServicesContainer} id="services">
-          {/* <div className={styles.svgContainer}>
-            <PageSvg />
-          </div> */}
-          <div className={styles.ServiceTitleContainer}>
-            <h2 className={styles.ServiceTitle}>Services</h2>
-          </div>
-          <div className={styles.ServiceCardThinContainer}>
-            <ServiceCardThin ref={serviceCard1Ref} 
-              title="Service 1" 
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec mollis turpis. 
-              Fusce tempus velit at magna."   
-              price="Price" 
-            />
-            <ServiceCardThin ref={serviceCard2Ref} 
-              title="Service 2" 
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec mollis turpis. 
-              Fusce tempus velit at magna."  
-              price="Price" 
-            />
-            <ServiceCardThin ref={serviceCard3Ref} 
-              title="Service 3" 
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec mollis turpis. 
-              Fusce tempus velit at magna."   
-              price="Price" 
-            />
-          </div>
-        </section>
+        
       </main>
     </>
   );
