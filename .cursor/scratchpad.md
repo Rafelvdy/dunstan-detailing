@@ -363,8 +363,19 @@ Service descriptions can be lengthy and currently display in full, which creates
 
 - Step 1 implemented: added `isExpanded` state, header row with toggle button, ARIA wiring, and content container modifiers.
 - CSS added: header layout, toggle button styling, and `max-height` transition with `data-expanded` attribute.
+- Refinement: Ensure toggle aligns with the first line of the title and remains single-line height (`align-items: flex-start` on header, `align-self: flex-start`, `line-height: 1`, and compact `padding` on button).
+
+— Step 2: Manual Visual QA (In Progress)
+- Verify default state: All cards collapsed on initial load.
+- Toggle behavior: Click “Show more” expands smoothly; “Show less” collapses smoothly with no layout jumps.
+- Price visibility: Price remains visible in both states.
+- Alignment: Title and toggle look visually balanced across single-line and multi-line titles per current design preference.
+- Keyboard: Tab focuses the toggle; Enter/Space toggles expansion.
+- Responsiveness: Behavior and spacing look good on mobile, tablet, and desktop widths.
 
 ## Executor's Feedback or Assistance Requests
+
+- Please run through the Step 2 checklist above and report any visual issues (spacing, timing, alignment). I’ll refine immediately based on your feedback.
 
 - Confirm button text preference:
   - Option A: "Show more" / "Show less"

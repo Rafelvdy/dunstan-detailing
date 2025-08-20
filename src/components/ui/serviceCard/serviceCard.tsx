@@ -20,16 +20,14 @@ export default function ServiceCard({ title, contents, price }: ServiceCardProps
             <div className={styles.ServiceCardHeader}>
                 <div className={styles.ServiceCardTitle}>
                     <h3>{title}</h3>
-                </div>
-                <button
+                    <button
                     type="button"
-                    className={styles.ServiceCardToggle}
-                    aria-expanded={isExpanded}
-                    aria-controls={`service-contents-${contentId}`}
                     onClick={handleToggle}
-                >
-                    {isExpanded ? "Show less" : "Show more"}
-                </button>
+                    className={styles.ServiceCardToggle}
+                    >
+                        {isExpanded ? "Show less" : "Show more"}
+                    </button>
+                </div>   
             </div>
             <div
                 className={styles.ServiceCardContents}

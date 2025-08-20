@@ -24,11 +24,23 @@
     max-width: 450px;
     letter-spacing: 0.5px;
     line-height: 1.7;
-    background: rgb(54, 50, 50);
+    background: linear-gradient(to right, #333333, #666666);
     border-radius: 10px;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
     padding: 20px;
     color: rgba(255, 255, 255, 0.7);
+    position: relative;
+}
+
+.CompanyText::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-radial-gradient(circle, black 0, transparent 1px);
+    background-size: 3px 3px;
+    opacity: 0.2;
+    mix-blend-mode: overlay;
+    pointer-events: none;
 }
 
 @media (min-width: 600px) {
