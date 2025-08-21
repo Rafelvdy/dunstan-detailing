@@ -1,6 +1,6 @@
 import styles from "./services.module.css"
 import ServiceCard from "@/components/ui/serviceCard/serviceCard"
-
+ 
 export default function Services() {
     return (
         <section className={styles.ServicesContainer}>

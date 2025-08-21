@@ -1,5 +1,6 @@
 .ServiceCard {
-    width: 300px;
+    width: 90%;
+    max-width: 400px;
     height: fit-content;
     border-radius: 10px;
     display: flex;
@@ -7,11 +8,16 @@
     align-items: flex-start;
     justify-content: center;
     background: linear-gradient(to right, #333333, #666666);
-    /* box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.1); */
+    box-shadow: 0 0 10px 5px rgba(102, 49, 215, 0.1);
     padding: 10px;
     overflow: visible;
     position: relative;
     transition: all 0.5s ease;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .ServiceCard::after {
@@ -23,6 +29,7 @@
     opacity: 0.2;
     mix-blend-mode: overlay;
     pointer-events: none;
+    border-radius: 10px;
 }
 
 .ServiceCardTitle {
@@ -36,22 +43,18 @@
     font-size: 24px;
     color: white;
     position: relative;
+    text-align: center;
 
 }
 
-/* .ServiceCardTitle h3 {
-    background-color: #6631d7;
-    padding: 0px 5px;
-    text-align: left;
-    border-radius: 5px;
-} */
-
 .ServiceCardToggle {
     position: absolute;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: -5px;
     font-family: "montserrat";
     font-size: 12px;
+    width: 100%;
 }
 
 .ServiceCardContents {
@@ -66,7 +69,30 @@
     line-height: 1.6;
     overflow: hidden;
     transition: max-height 300ms ease;
-    margin-top: 5px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.ServiceCardContentsList {
+    list-style: none;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.ServiceCardContentsList li {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    max-width: fit-content;
+}
+
+.ServiceCardContentsList li::before {
+    content: "• ";
+    position: absolute;
+    left: -15px; /* Adjust this value to position bullet closer/further from text */
+    color: rgba(255, 255, 255, 0.7); /* Match your text color */
 }
 
 .ServiceCardContents[data-expanded="true"] {
@@ -82,9 +108,9 @@
     padding:  0 10px;
 }
 
-.ServiceCardContentsList li::marker {
+/* .ServiceCardContentsList li::marker {
     content: "• ";
-}
+} */
 
 .ServiceCardPrice {
     grid-area: price;
@@ -95,4 +121,27 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 2.5;
+}
+
+@media (min-width: 600px) {
+    .ServiceCardTitle {
+        font-size: 28px;
+    }
+    .ServiceCardToggle {
+        font-size: 14px;
+        bottom: -8px;
+    }
+    .ServiceCardContents {
+        font-size: 16px;
+    }
+    .ServiceCardPrice {
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 768px) {
+    .ServiceCard {
+        width: 75%;
+        max-width: 700px;
+    }
 }

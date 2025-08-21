@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
+} 
 
 .ServicesTitle {
     font-family: "montserrat", sans-serif;
@@ -25,12 +25,6 @@
     text-align: justify;
 }
 
-@media (min-width: 600px) {
-    .ServicesSubtitle {
-        text-align: center;
-    }
-}
-
 .ServicesCardContainer {
     width: 100%;
     height: fit-content;
@@ -40,4 +34,28 @@
     align-items: center;
     justify-content: space-between;
     gap: 50px;
+}
+
+@media (min-width: 600px) {
+    .ServicesTitle {
+        font-size: 38px;
+    }
+    .ServicesSubtitle {
+        text-align: center;
+        font-size: 16px;
+    }
+    .ServicesCardContainer {
+        margin-top: 100px;
+    }
+
+}
+
+@media (min-width: 1024px) {
+    .ServicesTitle {
+        font-size: 48px;
+    }
+    .ServicesSubtitle {
+        font-size: 18px;
+        max-width: 600px;
+    }
 }
