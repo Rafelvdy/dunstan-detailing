@@ -3,7 +3,8 @@ import styles from "./gallery.module.css";
 
 const Gallery = () => {
     return (
-        <section className={styles.galleyContainer}>
+        <section className={styles.galleryContainer}>
+            <h2 className={styles.galleryTitle}>Our Work</h2>
             <ImageCarousel />
         </section>
     )
