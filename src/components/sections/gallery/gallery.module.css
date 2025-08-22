@@ -6,6 +6,8 @@
     justify-content: center;
     gap: 70px;
     flex-direction: column;
+    position: sticky;
+    top: 0;
 }
 
 .galleryTitle {

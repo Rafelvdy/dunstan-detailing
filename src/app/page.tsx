@@ -5,34 +5,19 @@ import Hero from "@/components/sections/hero/hero";
 import Company from "@/components/sections/company/company";
 import Gallery from "@/components/sections/gallery/gallery";
 import Services from "@/components/sections/services/services";
+import Footer from "@/components/sections/footer/footer";
 
 import DeskNav from "@/components/ui/navBar/desktop/deskNav";
 import MobileNav from "@/components/ui/navBar/mobile/mobileNav";
 import ReviewsSection from "@/components/ui/reviewsSection";
 
-import { useRef, useState } from "react";
-import { gsap } from "gsap";
-import { SplitText } from "gsap/SplitText";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useState } from "react";
 import { useEffect } from "react";
-// import Image from "next/image";
-// import Link from "next/link";
 
-gsap.registerPlugin(SplitText);
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  // const [isFontLoaded, setIsFontLoaded] = useState<boolean>(false);
-  
-  
-  const pfpRef = useRef<HTMLDivElement>(null);
-  const aboutTextContainerRef = useRef<HTMLDivElement>(null);
-  const exampleImageRef = useRef<HTMLDivElement>(null);
-  const aboutContainerRef = useRef<HTMLDivElement>(null);
-  
-  const galleryTitleRef = useRef<HTMLDivElement>(null);
 
 
   useEffect(() => {
@@ -45,78 +30,6 @@ export default function Home() {
 
     return () => { window.removeEventListener('resize', handleResize); }
   }, []);
-
-  
-
-
-  useEffect(() => {
-    //Hero page animations
-      const galleryTitleSplit = SplitText.create(galleryTitleRef.current, {
-        type: "lines",
-        linesClass: "line",
-        autoSplits: true,
-        mask: "lines",
-      });
-
-      //About page animations
-      gsap.set(pfpRef.current, {
-        x: 50,
-        opacity: 0,
-      });
-      gsap.set(aboutTextContainerRef.current, {
-        x: 50,
-        opacity: 0,
-      });
-      gsap.set(exampleImageRef.current, {
-        x: 50,
-        opacity: 0,
-      });
-
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: aboutContainerRef.current,
-          start: "top center",
-          end: "bottom bottom", 
-          markers: false,
-        }
-      })
-      .to(pfpRef.current, { 
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power2.out",
-      }, 0)
-      .to(aboutTextContainerRef.current, {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power2.out",
-      }, 0.1)
-      .to(exampleImageRef.current, {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power2.out",
-      }, 0.2)
-
-      gsap.set(galleryTitleSplit.lines, {
-        y: 100,
-      })
-
-      gsap.to(galleryTitleSplit.lines, {
-        scrollTrigger: {
-          trigger: galleryTitleRef.current,
-          start: "top 90%",
-        },
-        y: 0,
-        duration: 0.5,
-        ease: "power2.out",
-      })
-
-    
-  }, []); 
-
-
 
   return (
     <>
@@ -131,7 +44,10 @@ export default function Home() {
         <Company />
         <ReviewsSection />
         <Services />
-        <Gallery />
+        <div className={styles.stickyContainer}>
+          <Gallery />
+        </div>
+        <Footer />
         
         
       </main>

@@ -1,0 +1,61 @@
+.footerContainer {
+    background: white;
+    height: 130dvh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 30px 15px;
+}
+
+.differentContentTitle {
+    font-size: 30px;
+    color: black;
+    font-family: "montserrat";
+    font-weight: 600;
+    text-align: center;
+}
+
+.differentContentText {
+    color: rgba(0, 0, 0, 0.7);
+    font-family: "roboto";
+    font-size: 16px;
+    text-align: center;
+}
+
+.mapTitle {
+    color: black;
+    font-size: 20px;
+    font-family: "montserrat";
+    font-weight: 600;
+    text-align: center;
+}
+
+.contactContainer {
+    color: black;
+}
+
+.contactInfo {
+    font-family: "roboto";
+    font-size: 16px;
+    text-align: left;
+    margin-top: 5px;
+}
+
+.contactTitle {
+    font-size: 20px;
+    font-family: "montserrat";
+    font-weight: 600;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.contactText {
+    font-family: "roboto";
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.7);
+    text-align: left;
+    margin-bottom: 20px;
+}
