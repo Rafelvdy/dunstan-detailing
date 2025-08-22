@@ -1,14 +1,11 @@
 import styles from "./hero.module.css";
 import { useEffect, useRef, useState, useCallback } from "react";
-import { gsap } from "gsap";
-import { SplitText } from "gsap/SplitText";
 
 const sources = ["/videos/lambo-hero.web.mp4", "/videos/car-hero.web.mp4"];
 const posters = ["/images/gallery-image-1.webp", "/images/gallery-image-7.webp"];
 
 const Hero = () => {
     const heroTitleRef = useRef<HTMLDivElement>(null);
-    const heroSubtitleRef = useRef<HTMLDivElement>(null);
     const heroContactButtonRef = useRef<HTMLDivElement>(null);
 
     const [isFontLoaded, setIsFontLoaded] = useState<boolean>(false);
