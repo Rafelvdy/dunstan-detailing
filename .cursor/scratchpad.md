@@ -1,3 +1,39 @@
+# Background and Motivation
+The user wants contact info in the footer (email and phone) to copy to the clipboard when clicked, working reliably across devices and browsers, with a clean, non-intrusive UI confirmation that matches the current aesthetic.
+
+# Key Challenges and Analysis
+- Cross-browser/device clipboard support: prefer `navigator.clipboard.writeText`, with fallback to a hidden textarea + `document.execCommand('copy')` for older/iOS cases.
+- Accessibility: Click targets should be keyboard-navigable and appropriately labeled without altering the current look.
+- UI feedback: Subtle confirmation (small inline pill/tooltip) that fades out; avoid layout shift and visual noise.
+- Styling consistency: Match CSS Modules approach, fonts ("roboto", "montserrat"), and minimal black/white palette.
+
+# High-level Task Breakdown
+1) Implement cross-device clipboard utility
+   - Success: Utility tries modern API and falls back gracefully; returns boolean for success/failure.
+
+2) Make footer contact items clickable and accessible
+   - Success: Email and phone are rendered as accessible controls with keyboard support and no visual regression.
+
+3) Add subtle inline "Copied" UI matching style
+   - Success: On success, a small pill/tooltip shows for ~2s near the item, using existing fonts/colors, with gentle fade.
+
+4) Cross-device verification
+   - Success: Manual test on desktop Chrome + mobile Safari/Chrome confirms copy works and confirmation displays; no console errors.
+
+# Project Status Board
+- [ ] Implement cross-device clipboard copy utility
+- [ ] Make footer contact items clickable and accessible
+- [ ] Add subtle inline "Copied" UI matching styles
+- [ ] Cross-device manual test (desktop Chrome, iOS Safari, Android Chrome)
+
+# Current Status / Progress Tracking
+Planning drafted. Awaiting mode selection (Planner vs Executor) to proceed.
+
+# Executor's Feedback or Assistance Requests
+None currently. Will request if clipboard API restrictions arise in specific environments.
+
+# Lessons
+- Prefer feature detection for clipboard with a robust fallback for older browsers and iOS Safari.
 Background and Motivation
 The hero section uses a video that should be 100% width within its container and vertically centered, with the top and bottom cropped when the video’s height exceeds the container height. Currently, CSS forces a portrait aspect ratio and lacks container overflow control, leading to inconsistent cropping/centering behavior.
 

@@ -44,6 +44,12 @@
     margin-top: 5px;
 }
 
+.contactInfo:hover {
+    color: #000000;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .contactTitle {
     font-size: 20px;
     font-family: "montserrat";
@@ -58,4 +64,48 @@
     color: rgba(0, 0, 0, 0.7);
     text-align: left;
     margin-bottom: 20px;
+}
+
+
+/* Contact rows with inline copied indicator */
+.contactRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 5px;
+    position: relative;
+}
+
+.contactInfoButton {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
+.contactInfoButton:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.4);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.copiedPill {
+    font-family: "montserrat";
+    font-size: 12px;
+    color: white;
+    background: black;
+    border-radius: 999px;
+    padding: 4px 8px;
+    opacity: 0;
+    animation: fadeInOut 2s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(2px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-2px); }
 }
