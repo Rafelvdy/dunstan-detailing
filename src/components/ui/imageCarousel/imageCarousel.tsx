@@ -10,6 +10,8 @@ import {
   import styles from "./imageCarousel.module.css"
   import { useState, useEffect, useCallback } from "react"
 
+  const BLUR_DATA_URL = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect width='1' height='1' fill='%23111'/></svg>"
+
 export default function ImageCarousel() {
 
     const [isDesktop, setIsDesktop] = useState(false)
@@ -78,7 +80,11 @@ export default function ImageCarousel() {
                             width={1000}
                             height={1000}
                             className={styles.carouselImage}
-                            priority={i === 0}
+                            priority={!isDesktop ? i < 2 : i === 0}
+                            loading={!isDesktop ? (i < 2 ? "eager" : "lazy") : (i === 0 ? "eager" : "lazy")}
+                            placeholder="blur"
+                            blurDataURL={BLUR_DATA_URL}
+                            unoptimized
                             sizes={sizes}
                         />
                     </CarouselItem>
