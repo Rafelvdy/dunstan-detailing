@@ -15,6 +15,7 @@ const Hero = () => {
     const videoARef = useRef<HTMLVideoElement>(null);
     const videoBRef = useRef<HTMLVideoElement>(null);
     const [nextReady, setNextReady] = useState(false);
+    const isTransitioningRef = useRef(false);
     const crossfadeMs = 320;
 
     const getNextIndex = useCallback((i: number) => (i + 1) % sources.length, []);
@@ -38,16 +39,24 @@ const Hero = () => {
             el.poster = posters[nextIndex];
         }
         el.load();
-        el.play().then(() => {
-            // Keep it paused until crossfade start to avoid audio drift (muted anyway)
-            el.pause();
-        }).catch(() => {
-            // Autoplay restrictions shouldn't apply while muted, ignore
-        });
+        // If already buffered enough, mark as ready immediately
+        if (el.readyState >= 3 /* HAVE_FUTURE_DATA */) {
+            setNextReady(true);
+        }
+        el.play()
+            .then(() => {
+                // Keep it paused until crossfade start to avoid drift (muted anyway)
+                el.pause();
+            })
+            .catch(() => {
+                // Autoplay restrictions shouldn't apply while muted; ignore
+            });
     }, [getNextIndex]);
 
     // Start crossfade to next video
     const startCrossfade = useCallback(() => {
+        if (isTransitioningRef.current) return;
+        isTransitioningRef.current = true;
         const currentRef = activeLayer === "A" ? videoARef : videoBRef;
         const nextRef = activeLayer === "A" ? videoBRef : videoARef;
         const current = currentRef.current;
@@ -70,6 +79,7 @@ const Hero = () => {
             setActiveLayer(activeLayer === "A" ? "B" : "A");
             // Prepare the following one
             prepareNext(newActiveIndex, activeLayer === "A" ? "B" : "A");
+            isTransitioningRef.current = false;
         }, crossfadeMs);
     }, [activeIndex, activeLayer, crossfadeMs, getNextIndex, prepareNext]);
 
@@ -105,13 +115,20 @@ const Hero = () => {
         const el = currentRef.current;
         if (!el) return;
         const remainingMs = (el.duration - el.currentTime) * 1000;
-        if (Number.isFinite(remainingMs) && remainingMs <= 300 && nextReady) {
+        if (
+            !isTransitioningRef.current &&
+            Number.isFinite(remainingMs) &&
+            remainingMs <= 300 &&
+            nextReady
+        ) {
             startCrossfade();
         }
     }, [activeLayer, nextReady, startCrossfade]);
 
     const handleEnded = useCallback(() => {
-        startCrossfade();
+        if (!isTransitioningRef.current) {
+            startCrossfade();
+        }
     }, [startCrossfade]);
 
     return (
