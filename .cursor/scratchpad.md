@@ -1,3 +1,213 @@
+## Background and Motivation
+
+The hero section plays a sequence of videos. When one ends and the next begins, a brief grey/blank flash is visible before the new video renders. This degrades perceived quality of the landing experience.
+
+Update — continuous loop requirement:
+- The hero should loop continuously through all videos in `sources`, with smooth transitions and no gaps.
+- The gallery should feel instant when navigating; next images should be ready without visible loading.
+
+## Key Challenges and Analysis
+
+- Single video element with `src` swapping triggers a re-load, causing a blank frame between sources.
+- Current code uses `preload="auto"` on the hero video, but with a single `<video>` this still re-initializes the element on `src` swap, risking a visible flash if the next source isn't render-ready.
+- The container/background may show through during swap; if not explicitly set, the browser default can appear grey.
+- There is no crossfade; the next video is not guaranteed `canplay`-ready when the swap occurs, especially on slower networks or mobile.
+- iOS/Android autoplay constraints require `muted` and `playsInline`; those are already set, but preloading and programmatic play timing still matter.
+
+Code references observed:
+
+```29:58:src/components/sections/hero/hero.tsx
+            <video
+                ref={videoRef}
+                autoPlay
+                muted
+                loop={false}
+                playsInline
+                preload="auto"
+                className={styles.HeroVideo}
+                src={sources[index]}
+                onEnded={() => {
+                    setIndex((index + 1) % sources.length);
+                }}
+            />
+```
+
+```139:189:src/components/sections/hero/hero.module.css
+.HeroVideoContainer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    margin-top: 0;
+    background: transparent; // Will be set to solid black in implementation to avoid grey flash
+    z-index: 0;
+    height: 100%;
+}
+
+.HeroVideo {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+```
+
+## High-level Task Breakdown
+
+1) Set explicit background for the video container
+- Success criteria:
+  - During any load/swap, the background is black (not grey) under the gradient overlay.
+  - No layout shifts introduced.
+
+2) Preload hero videos ahead of time
+- Approach options:
+  - Add `<link rel="preload" as="video" href="/videos/lambo-hero.web.mp4">` and for the other source in `layout.tsx` head.
+  - Or include a hidden `<video preload="auto">` for the upcoming source.
+- Success criteria:
+  - Network panel shows both videos buffered early on first paint.
+  - Swap latency reduced to near-zero on typical connections.
+
+3) Implement dual-video crossfade with pre-buffering (preferred) and continuous loop through all sources
+- Approach:
+  - Maintain two `<video>` elements: one visible (playing), one hidden (next) with `preload="auto"` and listen for `onCanPlay`.
+  - Continuously compute `nextIndex = (activeIndex + 1) % sources.length` to loop through all videos.
+  - When current nears end, start loading next; on `ended` (or near-end threshold), crossfade opacity from current to next in ~200–400ms.
+  - Swap refs/roles and immediately begin preloading the subsequent source in the now-hidden element.
+- Success criteria:
+  - No grey/blank frame between videos across desktop and mobile.
+  - Smooth crossfade with no stutter at 60fps.
+  - CPU/GPU usage remains acceptable on mid-range devices.
+
+4) Add `poster` images as graceful fallback
+- Use a representative frame for each video to cover any residual first-frame flash.
+- Success criteria:
+  - If a video is delayed, the poster is shown under the gradient; no grey appears.
+
+5) Guard play-timing with readiness events
+- Listen to `loadeddata`/`canplay` on the next video before starting the crossfade.
+- Use `requestVideoFrameCallback` (where available) to time the swap just after a rendered frame to avoid tearing.
+- Success criteria:
+  - No visible stalls when transitioning, even on throttled networks.
+
+6) Fine-tune network and caching (no service worker)
+- Ensure static caching for `/public/videos/*` and `/public/images/*` is long-lived; add `Cache-Control` via Next `headers()`.
+- Use `next/image` best practices (sizes, priority for first viewport images) and prefetch adjacent carousel images.
+- Success criteria:
+  - Subsequent visits show immediate transitions from cache.
+  - Carousel navigation feels instant for at least the next two items.
+
+Risk/Trade-offs:
+- Preloading and dual-video increases memory/bandwidth; acceptable for two short hero clips but should be measured.
+- Mobile data concerns: optionally gate preloading to `navigator.connection.saveData !== true` and/or Wi‑Fi.
+
+## Detailed Plan: Scalable Fade-In/Out Crossfade for Hero
+
+### Goals
+- Smooth crossfade between any number of videos with no grey/blank frames.
+- Automatically scales when adding/removing items from `sources: string[]` and loops continuously.
+- Robust on mobile (autoplay, inline, muted), with graceful fallback.
+
+### Architecture
+- Two layered `<video>` elements (A and B) inside `.HeroVideoContainer`:
+  - Both absolutely positioned, `object-fit: cover`, full-bleed.
+  - CSS controls opacity; only one is visible at a time.
+  - Container has solid black background under the existing gradient overlay.
+- Rotation strategy for N sources:
+  - Track `activeIndex` (currently visible/playing source) and `nextIndex = (activeIndex + 1) % sources.length`.
+  - Track `activeLayer` as `'A' | 'B'` to know which DOM video is currently on top.
+  - The hidden layer preloads `sources[nextIndex]` with `preload="auto"`, waits for `canplay`.
+- Transition trigger:
+  - Either on `timeupdate` when `remainingTime <= thresholdMs` (e.g., 300ms) or on `ended` as fallback.
+  - Start crossfade when the next layer reports `canplay` (or after small timeout fallback).
+- Swap sequence (typical):
+  1) Active layer is playing video i. Hidden layer sets `src` to video i+1, `preload="auto"`, `muted`, `playsInline`.
+  2) Hidden layer awaits `canplay` and `play()` promise resolution.
+  3) Crossfade: set hidden layer `opacity: 1` and active layer `opacity: 0` over 300–400ms.
+  4) On `transitionend`, pause the now-hidden old layer, clear its `src` or leave as-is, then flip `activeLayer`.
+  5) Update `activeIndex = nextIndex`, compute new `nextIndex`, and begin preloading the subsequent video.
+
+### React Hook (optional, for reuse)
+- `useVideoCrossfade({ sources, crossfadeMs = 320, preloadAhead = 1, nearEndThresholdMs = 300 })`
+  - Returns: `{ activeLayer, activeIndex, nextIndex, bindLayerA, bindLayerB, onContainerRef }`
+  - `bindLayerX` supplies refs, `src`, and event handlers to each `<video>`.
+  - Handles canplay, timeupdate, ended, and play promise errors internally.
+  - Automatically works for any `sources.length >= 1`.
+
+### CSS
+- `.HeroVideoLayer` shared styles: absolute, inset: 0, width/height 100%, `object-fit: cover`, `transition: opacity 320ms ease`.
+- `.isVisible { opacity: 1; }` and `.isHidden { opacity: 0; }`
+- Ensure `.HeroVideoContainer { background: #000; }` plus existing gradient via `::after`.
+
+### Attributes and readiness
+- Both videos: `autoPlay`, `muted`, `playsInline`, optional `disablePictureInPicture`.
+- Use `preload="auto"` on the hidden (next) layer; the visible layer can remain default.
+- Add a `poster` image (first frame or thumbnail) for each source to mask initial load on first paint.
+
+### Error handling and fallbacks
+- If `canplay` hasn’t fired within 1.5s after preparing next, start crossfade anyway (poster + black bg ensure no grey).
+- Always catch `video.play()` promise rejections to avoid unhandled promise rejections on mobile.
+- On `saveData` connections, reduce preloading (e.g., only preload metadata) or skip preloading entirely.
+
+### Extensibility
+- Adding more videos is just updating the `sources` array.
+- Hook-based approach can be reused in other sections if needed.
+- Crossfade duration can be themed via CSS variable.
+
+### Testing and Verification
+- Manual: throttle network, verify no grey flash; test desktop Chrome/Edge/Safari and mobile Safari/Chrome.
+- Visual: add a quick Storybook story or a Playwright snapshot around transition timing.
+- Performance: check CPU/GPU via Chrome Performance while looping transitions for 30s.
+
+### Success Criteria (measurable)
+- No visible grey/blank frame between videos on standard and throttled 3G Fast profiles.
+- Crossfade appears smooth (no stutter) at ~60fps on mid-range devices.
+- Adding/removing sources requires no code changes beyond editing the array.
+- No uncaught promise rejections or console errors across major browsers.
+
+## Project Status Board
+
+- [ ] Set `.HeroVideoContainer` background to black to mask any swap
+- [ ] Add `<link rel="preload" as="video">` for both hero videos in `layout.tsx`
+- [ ] Implement two-video crossfade with preloading and `canplay` gating
+- [ ] Add `poster` frames for both videos
+- [ ] Add basic Playwright/Storybook visual checks for no blank frame
+- [ ] Validate performance and CPU usage on mid and low-end devices
+
+### Gallery Instant-Feel Tasks
+- [ ] Mark first carousel image as `priority` and define responsive `sizes`
+- [ ] Prefetch next 1–2 images on mount and on slide change
+- [ ] Add optional `placeholder="blur"` with `blurDataURL` for perceived speed
+- [ ] Verify caching via Next `headers()` and CDN for `/images/*`
+
+### Networking & Caching Tasks (No Service Worker)
+- [ ] Configure `next.config.ts` `headers()` for long-lived `Cache-Control` on `/videos/:path*` and `/images/:path*`
+- [ ] Add `saveData` gating for aggressive preloads (videos/images)
+- [ ] Validate cache behavior on reload and subsequent visits
+
+### Hero Crossfade Tasks (Fade-In/Out, Scalable)
+- [ ] Add `.HeroVideoLayer` CSS and ensure container solid black background
+- [ ] Introduce dual `<video>` layers with refs and role switching (A/B)
+- [ ] Implement readiness gating (`canplay`) and `nearEndThresholdMs` trigger
+- [ ] Crossfade via CSS opacity transition; swap roles on `transitionend`
+- [ ] Preload next video with `preload="auto"`; handle `play()` promises
+- [ ] Add optional `poster` images; test slow network fallback behavior
+- [ ] Gate aggressive preloading on `saveData` connection flag
+- [ ] Add a minimal visual test or Storybook story to validate transitions
+
+## Current Status / Progress Tracking
+
+- Planning updated to include continuous hero loop and gallery instant-feel. Awaiting go-ahead to execute step 1 (set black background and add head preloads).
+
+## Executor's Feedback or Assistance Requests
+
+- Before implementing the crossfade:
+  - Confirm preferred crossfade duration (e.g., 300–400ms).
+  - Confirm we should gate aggressive preloads when `navigator.connection.saveData === true`.
+  - Confirm how many gallery images to prefetch ahead (recommend 2).
+  - Confirm that the optional service worker is out of scope (excluded as requested).
+
+## Lessons
+
+- Swapping `src` on a single `<video>` risks visible blank frames; pre-buffer and crossfade to avoid.
+- Use explicit container backgrounds to prevent the browser default grey from flashing through.
 # Background and Motivation
 The user wants contact info in the footer (email and phone) to copy to the clipboard when clicked, working reliably across devices and browsers, with a clean, non-intrusive UI confirmation that matches the current aesthetic.
 

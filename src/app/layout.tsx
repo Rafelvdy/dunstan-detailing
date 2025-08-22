@@ -52,6 +52,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preload" as="video" href="/videos/lambo-hero.web.mp4" />
+        <link rel="preload" as="video" href="/videos/car-hero.web.mp4" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${roboto.variable} antialiased`}
       >
