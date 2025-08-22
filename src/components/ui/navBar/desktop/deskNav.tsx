@@ -41,7 +41,7 @@ const DeskNav = () => {
               <li className={styles.DesktopNavBarItem}><a href="#about">About</a></li>
               <li className={styles.DesktopNavBarItem}><a href="#services">Services</a></li>
               <li className={styles.DesktopNavBarItem}><a href="#gallery">Gallery</a></li>
-              <li className={styles.DesktopNavBarItem}><a href="#contact">Pricing</a></li>
+              <li className={styles.DesktopNavBarItem}><a href="#map">Map</a></li>
               <li className={`${styles.DesktopNavBarItem} ${styles.DesktopNavBarItemContact}`}><a href="#contact">Contact</a></li>
             </ul>
           </div>

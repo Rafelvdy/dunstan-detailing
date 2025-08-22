@@ -55,7 +55,7 @@ const MobileNav = () => {
                   <li className={styles.HamburgerDropdownItem}><a href="#about">About</a></li>
                   <li className={styles.HamburgerDropdownItem}><a href="#services">Service</a></li>
                   <li className={styles.HamburgerDropdownItem}><a href="#gallery">Gallery</a></li>
-                  <li className={styles.HamburgerDropdownItem}><a href="#contact">Pricing</a></li>
+                  <li className={styles.HamburgerDropdownItem}><a href="#map">Map</a></li>
                   <li className={`${styles.HamburgerDropdownItem} ${styles.HamburgerDropdownItemContact}`}><a href="#contact">Contact</a></li>
                 </ul>
               </nav>

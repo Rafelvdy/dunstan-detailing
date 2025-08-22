@@ -3,7 +3,7 @@ import ServiceCard from "@/components/ui/serviceCard/serviceCard"
  
 export default function Services() {
     return (
-        <section className={styles.ServicesContainer}>
+        <section className={styles.ServicesContainer} id="services">
             <h2 className={styles.ServicesTitle}>What We Offer...</h2>
             <p className={styles.ServicesSubtitle}>We specialise in car owners who want to maintain or enhance the appearance and condition of their vehicles. 
                 This includes working professionals, car enthusiasts, and local businesses with company vehicles.</p>

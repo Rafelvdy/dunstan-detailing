@@ -69,7 +69,7 @@ const Hero = () => {
       }, [isFontLoaded]); // Added empty dependency array
 
     return (
-        <section className={styles.HeroContainer}>
+        <section className={styles.HeroContainer} id="home">
             
             <div className={styles.HeroVideoContainer}>
             <video
@@ -97,34 +97,6 @@ const Hero = () => {
                 <button className={styles.HeroContactButton}>Contact</button>
               )}
             </div>
-
-          
-          {/* <div className={styles.GridBackgroundContainer}></div> */}
-          {/* <div className={styles.HeroTitleContainer}>
-
-
-
-
-            <div className={styles.HeroTitle} ref={heroTitleRef}>
-              <h1 className={styles.HeroTitleText}>Premium Car Detailing that <span className={styles.HeroTitleTextHighlight}>SHINES</span> above the Rest.</h1>
-            </div>
-          </div>
-          <div className={styles.HeroSubtitleContainer}>
-            <div className={styles.HeroSubtitle} ref={heroSubtitleRef}>
-              {isFontLoaded && (
-                <ul>
-                  <li className={styles.HeroSubtitleItem}>Prep.</li>
-                  <li className={styles.HeroSubtitleItem}>Polish.</li>
-                  <li className={styles.HeroSubtitleItem}>Protect.</li>
-                </ul>
-              )}
-            </div>
-            <div className={styles.HeroContactButtonContainer} ref={heroContactButtonRef}>
-              {isFontLoaded && (
-                <button className={styles.HeroContactButton}>Contact</button>
-              )}
-            </div>
-          </div> */}
         </section>
     )
 }

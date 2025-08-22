@@ -46,11 +46,13 @@ export default function Home() {
         <Services />
         <div className={styles.stickyContainer}>
           <Gallery />
-        </div>
-        <Footer />
-        
+        </div>    
         
       </main>
+
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }

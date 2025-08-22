@@ -16,7 +16,7 @@ export default function Footer() {
     };
 
     return (
-        <footer className={styles.footerContainer}>
+        <footer className={styles.footerContainer} id="map">
             <div className={styles.differentContent}>
                 <h2 className={styles.differentContentTitle}>What makes us different?</h2>
                 <p className={styles.differentContentText}>With nearly a decade of experience in detailing, Dunstan Detailing offers a level of
