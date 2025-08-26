@@ -105,7 +105,7 @@ export default function Services() {
                                 "All leather protected with gtechniq leather guard.",
                                 "Interior glass protected."
                             ]}
-                     price="Starting From £1300"
+                     price="Starting From £1000"
                 />
 
                 <ServiceCard
@@ -148,7 +148,7 @@ export default function Services() {
                                 "Paint prep for ceramic coating.",
                                 "3 year ceramic coating applied."
                                 ]}
-                     price="Starting From £450"
+                     price="Starting From £250"
                 />
                 <ServiceCard
                      title="5 Year Ceramic Coating"
@@ -161,13 +161,27 @@ export default function Services() {
                                 "Paint prep for ceramic coating.",
                                 "5 year ceramic coating applied."
                                 ]}
-                     price="Starting From £700"
+                     price="Starting From £500"
                 />
 
                 <ServiceCard
                      title="Maintenance Plans"
                      contents={["Depending on the level of maintenance required"]}
                      price="Starting From £50 to £150"
+                />
+                <ServiceCard
+                    title="Additional Services"
+                    contents={[
+                         "Headlight restoration",
+                         "Plastic trim restoration",
+                         "Soft top clean and waterproof £120",
+                         "Hand Polish",
+                         "Machine polish",
+                         "1 and 2 stage machine polish",
+                         "Spray wax",
+                         "Spray ceramic"
+                    ]}
+                    price="Please contact us for a quote"
                 />
             </div>
         </section>
