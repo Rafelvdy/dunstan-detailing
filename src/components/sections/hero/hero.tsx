@@ -1,5 +1,6 @@
 import styles from "./hero.module.css";
 import { useEffect, useRef, useState, useCallback } from "react";
+import { gsap } from "gsap";
 
 const sources = ["/videos/lambo-hero.web.mp4", "/videos/car-hero.web.mp4"];
 const posters = ["/images/gallery-image-1.webp", "/images/gallery-image-7.webp"];
@@ -7,6 +8,7 @@ const posters = ["/images/gallery-image-1.webp", "/images/gallery-image-7.webp"]
 const Hero = () => {
     const heroTitleRef = useRef<HTMLDivElement>(null);
     const heroContactButtonRef = useRef<HTMLDivElement>(null);
+    const heroVideoContainerRef = useRef<HTMLDivElement>(null);
 
     const [isFontLoaded, setIsFontLoaded] = useState<boolean>(false);
 
@@ -83,6 +85,45 @@ const Hero = () => {
         }, crossfadeMs);
     }, [activeIndex, activeLayer, crossfadeMs, getNextIndex, prepareNext]);
 
+    
+
+    useEffect(() => {
+        gsap.set(heroTitleRef.current, {
+            opacity: 0,
+            y: 100
+        });
+
+        gsap.set(heroContactButtonRef.current, {
+            opacity: 0,
+            y: 100
+        });
+
+        gsap.set(heroVideoContainerRef.current, {
+            opacity: 0,
+        })
+
+        gsap.to(heroTitleRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power2.inOut",
+        });
+
+        gsap.to(heroContactButtonRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power2.inOut",
+        });
+
+        gsap.to(heroVideoContainerRef.current, {
+            opacity: 1,
+            duration: 1.5,
+            ease: "power2.inOut",
+        });
+        
+    }, []);
+
     useEffect(() => {
         document.fonts.ready.then(() => {
           setIsFontLoaded(true);
@@ -134,7 +175,7 @@ const Hero = () => {
     return (
         <section className={styles.HeroContainer} id="home">
             
-            <div className={styles.HeroVideoContainer}>
+            <div className={styles.HeroVideoContainer} ref={heroVideoContainerRef}>
                 <video
                     ref={videoARef}
                     autoPlay
