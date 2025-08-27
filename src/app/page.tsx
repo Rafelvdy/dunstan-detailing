@@ -10,6 +10,7 @@ import Footer from "@/components/sections/footer/footer";
 import DeskNav from "@/components/ui/navBar/desktop/deskNav";
 import MobileNav from "@/components/ui/navBar/mobile/mobileNav";
 import ReviewsSection from "@/components/ui/reviewsSection";
+import ContactPopup from "@/components/ui/contactPopup/contactPopup";
 
 import { useState } from "react";
 import { useEffect } from "react";
@@ -40,6 +41,7 @@ export default function Home() {
 
       
       <main className={styles.PageContainer} id="home">
+        <ContactPopup />
         <Hero />
         <Company />
         <ReviewsSection />
