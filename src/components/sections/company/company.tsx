@@ -44,7 +44,9 @@ const Company = () => {
             }
         });
 
-        
+        return () => {
+            ScrollTrigger.killAll();
+        }        
     })
 
     return (

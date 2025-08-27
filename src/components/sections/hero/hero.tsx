@@ -122,6 +122,12 @@ const Hero = () => {
             ease: "power2.inOut",
         });
         
+        return () => {
+            gsap.killTweensOf(heroTitleRef.current);
+            gsap.killTweensOf(heroContactButtonRef.current);
+            gsap.killTweensOf(heroVideoContainerRef.current);
+        }
+        
     }, []);
 
     useEffect(() => {
