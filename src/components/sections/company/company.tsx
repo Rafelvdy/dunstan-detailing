@@ -26,7 +26,7 @@ const Company = () => {
             trigger: companyContainerRef.current,
             start: "top 85%",
             scrub: false,
-            markers: true,
+            markers: false,
             onEnter: () => {
                 gsap.to(companyTitleRef.current, {
                     y: 0,
