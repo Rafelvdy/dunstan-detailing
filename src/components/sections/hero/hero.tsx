@@ -127,7 +127,6 @@ const Hero = () => {
             gsap.killTweensOf(heroContactButtonRef.current);
             gsap.killTweensOf(heroVideoContainerRef.current);
         }
-        
     }, []);
 
     useEffect(() => {
