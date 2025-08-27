@@ -15,7 +15,7 @@ const BLUR_DATA_URL = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/200
 // Define carousel images with SEO metadata based on actual image content
 const CAROUSEL_IMAGES = [
     {
-        src: "/images/carousel/1a.jpg",
+        src: "/images/carousel/1a.webp",
         alt: "Red Ferrari luxury sports car interior detailing - leather seats and dashboard cleaning",
         title: "Ferrari Interior Detailing - Premium Leather Treatment and Dashboard Care"
     },
@@ -25,37 +25,37 @@ const CAROUSEL_IMAGES = [
         title: "Ferrari 360 Modena Paint Correction and Ceramic Coating Service"
     },
     {
-        src: "/images/carousel/2a.jpg",
+        src: "/images/carousel/2a.webp",
         alt: "Black VW Golf professional exterior detailing - paint enhancement and protection",
         title: "VW Golf Sedan Paint Enhancement and Protection Detailing"
     },
     {
-        src: "/images/carousel/2b.jpg",
+        src: "/images/carousel/2b.webp",
         alt: "Black Golf rear view showing professional paint correction results",
         title: "Golf Paint Correction Results - Mirror Finish Achievement"
     },
     {
-        src: "/images/carousel/3a.jpg",
+        src: "/images/carousel/3a.webp",
         alt: "Honda Civic type R car exterior wash and detailing on driveway",
         title: "Honda Civic type R Professional Exterior Wash and Detail Service"
     },
     {
-        src: "/images/carousel/4a.jpg",
+        src: "/images/carousel/4a.webp",
         alt: "Luxury supercars on driveway - Lamborghini and McLaren detailing showcase",
         title: "Supercar Collection Detailing - Lamborghini and McLaren Services"
     },
     {
-        src: "/images/carousel/5a.jpg",
+        src: "/images/carousel/5a.webp",
         alt: "BMW professional detailing",
         title: "BMW Professional Detailing"
     },
     {
-        src: "/images/carousel/5b.jpg",
+        src: "/images/carousel/5b.webp",
         alt: "White interior BMW detail. Care of leather seats and dashboard.",
         title: "White interior BMW detail. Care of leather seats and dashboard."
     },
     {
-        src: "/images/carousel/5c.jpg",
+        src: "/images/carousel/5c.webp",
         alt: "BMW boot interior detailing",
         title: "BMW boot interior detailing"
     },
@@ -65,7 +65,7 @@ const CAROUSEL_IMAGES = [
         title: "Classic Ford Escort restoration"
     },
     {
-        src: "/images/carousel/7a.jpg",
+        src: "/images/carousel/7a.webp",
         alt: "Classic green VW Volkswagen van exterior cleaning and restoration",
         title: "Volkswagen Van Classic Restoration and Exterior Detailing"
     },
@@ -80,7 +80,7 @@ const CAROUSEL_IMAGES = [
         title: "Orange Lamborghini interior detailing - premium leather care"
     },
     {
-        src: "/images/carousel/10a.jpg",
+        src: "/images/carousel/10a.webp",
         alt: "Engine bay detailing and cleaning service",
         title: "Engine bay detailing and cleaning"
     },
