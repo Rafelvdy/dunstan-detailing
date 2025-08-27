@@ -23,10 +23,14 @@ export default function Home() {
 
   const handleOpenContactPopup = () => {
     setIsContactPopupOpen(true);
+    // Prevent body scroll when popup is open
+    document.body.style.overflow = 'hidden';
   };
 
   const handleCloseContactPopup = () => {
     setIsContactPopupOpen(false);
+    // Restore body scroll when popup is closed
+    document.body.style.overflow = 'unset';
   };
 
   useEffect(() => {
