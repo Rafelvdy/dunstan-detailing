@@ -183,10 +183,10 @@ export default function ImageCarousel() {
                         "@type": "ImageGallery",
                         "name": "Dunstan Detailing - Professional Car Detailing Gallery",
                         "description": "Professional automotive detailing services including paint correction, ceramic coating, interior cleaning, and more",
-                        "url": typeof window !== "undefined" ? `${window.location.origin}/#gallery` : "",
+                        "url": "/#gallery",
                         "image": CAROUSEL_IMAGES.map(img => ({
                             "@type": "ImageObject",
-                            "url": typeof window !== "undefined" ? `${window.location.origin}${img.src}` : img.src,
+                            "url": img.src,
                             "description": img.alt,
                             "name": img.title
                         }))

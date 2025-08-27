@@ -632,3 +632,50 @@ Service descriptions can be lengthy and currently display in full, which creates
 
 - For simple collapses, CSS `max-height` transitions are clean and performant enough without measurement refs.
 - Use semantic buttons with ARIA to keep toggles obvious and accessible.
+
+---
+
+# Hydration Mismatch Error Resolution
+
+## Background and Motivation
+The application is experiencing a hydration mismatch error in the ImageCarousel component. The error occurs because the JSON-LD structured data script contains server/client conditional code that produces different values during server-side rendering vs client-side hydration.
+
+## Key Challenges and Analysis
+**Root Cause Identified**: Lines 186 and 189 in `imageCarousel.tsx` use `typeof window !== "undefined" ? window.location.origin : ""` and similar patterns inside the JSON-LD script. This creates different HTML content between server (empty strings) and client (actual URLs), causing React's hydration mismatch error.
+
+**Specific Issue**:
+- Server renders: `"url": ""`
+- Client hydrates: `"url": "https://example.com/#gallery"`
+- This difference triggers the hydration mismatch warning
+
+## High-level Task Breakdown
+1) Fix conditional window usage in JSON-LD structured data
+   - Replace dynamic URL generation with static/relative URLs
+   - Ensure server and client render identical content
+   - Success: No hydration mismatch errors in console
+
+2) Test application for hydration errors
+   - Verify no console errors on page load
+   - Confirm smooth hydration process
+   - Success: Clean console with no hydration warnings
+
+3) Verify structured data still functions properly
+   - Test SEO structured data parsing
+   - Confirm Google can still read the gallery metadata
+   - Success: Schema validation passes and SEO remains intact
+
+## Project Status Board
+- [ ] Fix conditional window usage in JSON-LD script
+- [ ] Test application for hydration errors
+- [ ] Verify structured data still functions properly
+
+## Current Status / Progress Tracking
+Analysis complete. Root cause identified in ImageCarousel component JSON-LD script. Ready to implement fix.
+
+## Executor's Feedback or Assistance Requests
+None currently. Solution approach is clear and straightforward.
+
+## Lessons
+- Avoid using `window` or other browser APIs inside content that needs to be server-side rendered
+- JSON-LD structured data should use static or relative URLs to prevent hydration mismatches
+- Server and client must render identical content for proper React hydration
