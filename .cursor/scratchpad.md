@@ -679,3 +679,109 @@ None currently. Solution approach is clear and straightforward.
 - Avoid using `window` or other browser APIs inside content that needs to be server-side rendered
 - JSON-LD structured data should use static or relative URLs to prevent hydration mismatches
 - Server and client must render identical content for proper React hydration
+
+---
+
+# Contact Popup State Management Implementation
+
+## Background and Motivation
+
+The ContactPopup component currently exists but is always visible and lacks proper state management. The requirement is to:
+- Hide the popup by default
+- Show popup when contact buttons are clicked (desktop nav, mobile nav, hero section)
+- Implement gradual background dim opacity animation (0 to 1) 
+- Popup itself should appear on click (no animation specified for popup)
+
+## Key Challenges and Analysis
+
+### Current Implementation Issues
+- ContactPopup is currently always rendered and visible
+- No state management for show/hide functionality
+- No click handlers on contact buttons
+- No background opacity animation
+
+### Required Changes
+1. **State Management**: Add global state for popup visibility
+2. **Contact Button Integration**: Add click handlers to 3 contact buttons:
+   - Desktop nav: `src/components/ui/navBar/desktop/deskNav.tsx` line 45
+   - Mobile nav: `src/components/ui/navBar/mobile/mobileNav.tsx` line 59  
+   - Hero button: `src/components/sections/hero/hero.tsx` line 215
+3. **CSS Animations**: Implement background dim opacity transition
+4. **Close Functionality**: Wire up the close button
+
+## High-level Task Breakdown
+
+1) **Implement popup state management in main app**
+   - Add isPopupOpen state to page.tsx
+   - Pass state and handlers to ContactPopup and navigation components
+   - Success: State properly managed at app level
+
+2) **Update ContactPopup component with conditional rendering and animations**
+   - Add conditional rendering based on isOpen prop
+   - Implement background dim opacity animation (0 to 1)
+   - Wire up close button functionality  
+   - Success: Popup shows/hides correctly with smooth background animation
+
+3) **Add click handlers to all contact buttons**
+   - Desktop nav contact button
+   - Mobile nav contact button  
+   - Hero section contact button
+   - Success: All 3 buttons trigger popup open
+
+4) **Test and refine animations**
+   - Verify gradual background opacity animation
+   - Ensure popup appears immediately on click
+   - Test close functionality
+   - Success: Smooth UX across all interactions
+
+## Project Status Board
+
+- [x] Add popup state management to page.tsx
+- [x] Update ContactPopup with conditional rendering and animations
+- [x] Add click handlers to desktop nav contact button
+- [x] Add click handlers to mobile nav contact button  
+- [x] Add click handlers to hero contact button
+- [x] Test popup functionality across all trigger points
+- [x] Verify background animation timing and smoothness
+
+## Current Status / Progress Tracking
+
+**STATUS**: IMPLEMENTATION COMPLETE ✅
+
+All contact popup functionality has been successfully implemented:
+
+### Changes Made:
+1. **State Management**: Added `isContactPopupOpen` state and handlers in `page.tsx`
+2. **ContactPopup Component**: 
+   - Added conditional rendering with `isOpen` prop
+   - Implemented gradual background opacity animation (0 to 1 over 300ms)
+   - Added click-to-close functionality (close button + background click)
+   - Improved close button styling with hover effects
+3. **Contact Button Integration**:
+   - Desktop nav: Contact link converted to button with click handler
+   - Mobile nav: Contact link converted to button with click handler + menu auto-close
+   - Hero button: Added click handler to existing contact button
+4. **CSS Styling**: Added proper button styling for all contact buttons to maintain visual consistency
+
+### Technical Implementation:
+- **Animation**: CSS transition on background-color with 300ms ease-in-out
+- **UX Flow**: Popup hidden by default → gradual background dim on open → immediate popup appearance → smooth close
+- **Accessibility**: Proper button elements with cursor pointer and hover states
+- **Mobile Experience**: Hamburger menu automatically closes when contact popup opens
+
+## Executor's Feedback or Assistance Requests
+
+Implementation complete! The contact popup now functions exactly as requested:
+- ✅ Popup hidden by default 
+- ✅ Shows when any of the 3 contact buttons are clicked
+- ✅ Background dim has gradual opacity animation (0 to 1)
+- ✅ Popup itself appears immediately on click
+- ✅ Close functionality works via close button and background click
+
+## Lessons
+
+- Always implement state management at appropriate level (app level for global components)
+- Plan component prop interfaces before implementation to ensure clean data flow
+- Use CSS transitions for smooth background animations rather than JavaScript animations
+- Convert links to buttons when they trigger state changes rather than navigation
+- Handle mobile UX by auto-closing menus when modal popups open

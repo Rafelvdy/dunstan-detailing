@@ -105,3 +105,14 @@
     font-family: "montserrat";
     margin-top: 15px;
 }
+
+.HamburgerDropdownItemContact button {
+    background: none;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+}

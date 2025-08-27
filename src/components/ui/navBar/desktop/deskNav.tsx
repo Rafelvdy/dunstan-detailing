@@ -1,7 +1,11 @@
 import styles from "./deskNav.module.css";
 // import Image from "next/image"; 
 
-const DeskNav = () => {
+interface DeskNavProps {
+    onOpenContactPopup: () => void;
+}
+
+const DeskNav = ({ onOpenContactPopup }: DeskNavProps) => {
     return (
         <div className={styles.DesktopNavBarContainer}>
           <div className={styles.LogoContainer}>
@@ -42,7 +46,9 @@ const DeskNav = () => {
               <li className={styles.DesktopNavBarItem}><a href="#services">Services</a></li>
               <li className={styles.DesktopNavBarItem}><a href="#gallery">Gallery</a></li>
               <li className={styles.DesktopNavBarItem}><a href="#map">Map</a></li>
-              <li className={`${styles.DesktopNavBarItem} ${styles.DesktopNavBarItemContact}`}><a href="#contact">Contact</a></li>
+              <li className={`${styles.DesktopNavBarItem} ${styles.DesktopNavBarItemContact}`}>
+                <button onClick={onOpenContactPopup}>Contact</button>
+              </li>
             </ul>
           </div>
         </div>

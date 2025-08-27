@@ -5,7 +5,11 @@ import { gsap } from "gsap";
 const sources = ["/videos/lambo-hero.web.mp4", "/videos/car-hero.web.mp4"];
 const posters = ["/images/gallery-image-1.webp", "/images/gallery-image-7.webp"];
 
-const Hero = () => {
+interface HeroProps {
+    onOpenContactPopup: () => void;
+}
+
+const Hero = ({ onOpenContactPopup }: HeroProps) => {
     const heroTitleRef = useRef<HTMLDivElement>(null);
     const heroContactButtonRef = useRef<HTMLDivElement>(null);
     const heroVideoContainerRef = useRef<HTMLDivElement>(null);
@@ -212,7 +216,12 @@ const Hero = () => {
 
             <div className={styles.HeroContactButtonContainer} ref={heroContactButtonRef}>
               {isFontLoaded && (
-                <button className={styles.HeroContactButton}>Contact</button>
+                <button 
+                  className={styles.HeroContactButton}
+                  onClick={onOpenContactPopup}
+                >
+                  Contact
+                </button>
               )}
             </div>
         </section>

@@ -3,8 +3,17 @@ import styles from "./mobileNav.module.css"
 import {HamburgerMenu} from "@/components/ui/hamburgerMenu"
 import { useState } from "react";
 
-const MobileNav = () => {
+interface MobileNavProps {
+    onOpenContactPopup: () => void;
+}
+
+const MobileNav = ({ onOpenContactPopup }: MobileNavProps) => {
   const [open, setOpen] = useState<boolean>(false);
+
+  const handleContactClick = () => {
+    onOpenContactPopup();
+    setOpen(false); // Close the mobile menu
+  };
 
     return (
         <div className={styles.MobileNavBar}>
@@ -56,7 +65,9 @@ const MobileNav = () => {
                   <li className={styles.HamburgerDropdownItem}><a href="#services">Service</a></li>
                   <li className={styles.HamburgerDropdownItem}><a href="#gallery">Gallery</a></li>
                   <li className={styles.HamburgerDropdownItem}><a href="#map">Map</a></li>
-                  <li className={`${styles.HamburgerDropdownItem} ${styles.HamburgerDropdownItemContact}`}><a href="#contact">Contact</a></li>
+                  <li className={`${styles.HamburgerDropdownItem} ${styles.HamburgerDropdownItemContact}`}>
+                    <button onClick={handleContactClick}>Contact</button>
+                  </li>
                 </ul>
               </nav>
             </div>

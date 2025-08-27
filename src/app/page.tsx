@@ -19,7 +19,15 @@ import { useEffect } from "react";
 export default function Home() {
   
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isContactPopupOpen, setIsContactPopupOpen] = useState<boolean>(false);
 
+  const handleOpenContactPopup = () => {
+    setIsContactPopupOpen(true);
+  };
+
+  const handleCloseContactPopup = () => {
+    setIsContactPopupOpen(false);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,14 +43,17 @@ export default function Home() {
   return (
     <>
       <header className={styles.MobileNavBarContainer}>
-        {!isMobile && <DeskNav />}
-        {isMobile && <MobileNav />}
+        {!isMobile && <DeskNav onOpenContactPopup={handleOpenContactPopup} />}
+        {isMobile && <MobileNav onOpenContactPopup={handleOpenContactPopup} />}
       </header>
 
       
       <main className={styles.PageContainer} id="home">
-        <ContactPopup />
-        <Hero />
+        <ContactPopup 
+          isOpen={isContactPopupOpen} 
+          onClose={handleCloseContactPopup} 
+        />
+        <Hero onOpenContactPopup={handleOpenContactPopup} />
         <Company />
         <ReviewsSection />
         <Services />

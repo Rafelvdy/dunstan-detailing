@@ -63,3 +63,14 @@
 .DesktopNavBarItemContact:hover {
     color: rgba(255, 255, 255, 0.8);
 }
+
+.DesktopNavBarItemContact button {
+    background: none;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+}
