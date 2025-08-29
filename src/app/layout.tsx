@@ -15,12 +15,6 @@ const geistMono = Geist_Mono({
 
 });
 
-// const homoarakhn = localFont({
-//   src: "/fonts/HOMOARAK.TTF",
-//   variable: "--font-homoarakhn",
-//   weight: "700"
-// });
-
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
@@ -36,6 +30,9 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Dunstan Detailing",
   description: "We provide the best car detailing services in Kent",
+  icons: {
+    icon: "/images/favicon/favicon.jpg",
+  },
 };
 
 export const viewport: Viewport = {

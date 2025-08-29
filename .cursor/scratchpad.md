@@ -1,10 +1,8 @@
 ## Background and Motivation
 
-The hero section plays a sequence of videos. When one ends and the next begins, a brief grey/blank flash is visible before the new video renders. This degrades perceived quality of the landing experience.
+**NEW REQUEST**: Comprehensive SEO Analysis and Optimization for Dunstan Detailing Website
 
-Update — continuous loop requirement:
-- The hero should loop continuously through all videos in `sources`, with smooth transitions and no gaps.
-- The gallery should feel instant when navigating; next images should be ready without visible loading.
+The user needs a complete SEO audit to ensure the website ranks well for car detailing services in Kent. This requires analyzing current implementation and identifying improvements across technical SEO, content optimization, structured data, meta tags, and performance factors.
 
 ## Key Challenges and Analysis
 
