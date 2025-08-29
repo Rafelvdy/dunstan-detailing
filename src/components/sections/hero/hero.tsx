@@ -126,10 +126,15 @@ const Hero = ({ onOpenContactPopup }: HeroProps) => {
             ease: "power2.inOut",
         });
         
+        // Capture ref values for cleanup
+        const titleElement = heroTitleRef.current;
+        const buttonElement = heroContactButtonRef.current;
+        const videoElement = heroVideoContainerRef.current;
+        
         return () => {
-            gsap.killTweensOf(heroTitleRef.current);
-            gsap.killTweensOf(heroContactButtonRef.current);
-            gsap.killTweensOf(heroVideoContainerRef.current);
+            gsap.killTweensOf(titleElement);
+            gsap.killTweensOf(buttonElement);
+            gsap.killTweensOf(videoElement);
         }
     }, []);
 

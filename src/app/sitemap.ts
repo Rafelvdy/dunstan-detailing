@@ -4,13 +4,13 @@ import { MetadataRoute } from 'next'
 const baseUrl = 'https://www.dunstandetailing.co.uk'
 
 // Service areas and key services for additional SEO value
-const services = [
-  'car-detailing-kent',
-  'paint-correction-maidstone',
-  'ceramic-coating-kent',
-  'interior-detailing-maidstone',
-  'mobile-car-detailing-kent'
-]
+// const services = [
+//   'car-detailing-kent',
+//   'paint-correction-maidstone',
+//   'ceramic-coating-kent',
+//   'interior-detailing-maidstone',
+//   'mobile-car-detailing-kent'
+// ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString()
@@ -49,14 +49,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Generate service-specific URLs for better local SEO
-  // These would be virtual pages that resolve to sections with service-specific content
-  const servicePages = services.map((service) => ({
-    url: `${baseUrl}/services/${service}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
+  // // Generate service-specific URLs for better local SEO
+  // // These would be virtual pages that resolve to sections with service-specific content
+  // const servicePages = services.map((service) => ({
+  //   url: `${baseUrl}/services/${service}`,
+  //   lastModified: currentDate,
+  //   changeFrequency: 'monthly' as const,
+  //   priority: 0.7,
+  // }))
 
   return [
     ...mainPages,
