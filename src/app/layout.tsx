@@ -29,7 +29,7 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: "Dunstan Detailing",
-  description: "We provide the best car detailing services in Kent",
+  description: "Expert car detailing services in Kent and South London. Paint correction, ceramic coating, interior detailing.",
   icons: {
     icon: "/images/favicon/favicon.jpg",
   },

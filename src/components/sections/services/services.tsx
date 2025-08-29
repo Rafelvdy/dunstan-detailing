@@ -6,7 +6,7 @@ export default function Services() {
         <section className={styles.ServicesContainer} id="services">
             <h2 className={styles.ServicesTitle}>What We Offer...</h2>
             <p className={styles.ServicesSubtitle}>We specialise in car owners who want to maintain or enhance the appearance and condition of their vehicles. 
-                This includes working professionals, car enthusiasts, and local businesses with company vehicles.</p>
+                This includes working professionals, car enthusiasts, and local businesses with company vehicles in Kent and South London</p>
             <div className={styles.ServicesCardContainer}>
                 <ServiceCard
                      title="DD Interior"
