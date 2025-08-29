@@ -40,5 +40,5 @@ Disallow: /src/
 # Set crawl delay to be respectful to server resources
 Crawl-delay: 1
 
-# Sitemap location (to be created)
+# Sitemap location
 Sitemap: https://www.dunstandetailing.co.uk/sitemap.xml
