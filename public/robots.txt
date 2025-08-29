@@ -1,0 +1,44 @@
+# Robots.txt for Dunstan Detailing
+# Professional Car Detailing Services in Kent
+
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Allow access to important CSS and JS files for proper rendering
+Allow: /_next/static/
+Allow: /images/
+Allow: /videos/
+Allow: /fonts/
+Allow: /logos/
+
+# Block access to development and build files
+Disallow: /_next/
+Disallow: /node_modules/
+Disallow: /.next/
+Disallow: /out/
+
+# Block access to configuration and system files
+Disallow: /*.json$
+Disallow: /*.config.*$
+Disallow: /.env*
+Disallow: /package-lock.json
+Disallow: /yarn.lock
+
+# Block access to development files
+Disallow: /README.md
+Disallow: /.git/
+Disallow: /.gitignore
+Disallow: /tsconfig.json
+Disallow: /tailwind.config.js
+Disallow: /postcss.config.mjs
+Disallow: /eslint.config.mjs
+
+# Block source code directory (already compiled to _next)
+Disallow: /src/
+
+# Set crawl delay to be respectful to server resources
+Crawl-delay: 1
+
+# Sitemap location (to be created)
+Sitemap: https://www.dunstandetailing.co.uk/sitemap.xml
