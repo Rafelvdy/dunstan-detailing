@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 // Define your website's base URL
-const baseUrl = 'https://www.dunstandetailing.co.uk'
+const baseUrl = 'https://www.dunstandetailing.com'
 
 // Service areas and key services for additional SEO value
 // const services = [
