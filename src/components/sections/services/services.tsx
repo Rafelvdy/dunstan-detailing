@@ -9,17 +9,7 @@ export default function Services() {
                 This includes working professionals, car enthusiasts, and local businesses with company vehicles in Kent and South London</p>
             <div className={styles.ServicesCardContainer}>
                 <ServiceCard
-                     title="DD Interior"
-                     contents={["Vacuum throughout carpets and seats.", 
-                                "Dash and console wiped over with interior detailer.", 
-                                "Doors cleaned.", 
-                                "Interior glass cleaned.", 
-                                "Odor eliminator applied."
-                                ]}
-                     price="Starting From £40"
-                />
-                <ServiceCard
-                     title="DD One Day Interior Detail"
+                     title="DD Full Interior Detail"
                      contents={["Deep pile vacumed on carpets and matts.", 
                                 "Carpets and matts shampooed.", 
                                 "Roof lining cleaned.", 
@@ -29,32 +19,60 @@ export default function Services() {
                                 "Interior glass cleaned.",
                                 "Dash and consoles cleaned with soft brush and microfiber cloth.",
                                 "Vents and crevices cleaned.",
-                                "Finished with interior detailer.",
-                                "Odor eliminator applied throughout."
+                                "Finished with interior detailer."
                                 ]}
-                     price="Starting From £200"
+                     price="Starting From £90"
                 />
-
                 <ServiceCard
-                     title="DD Gold Enhance Detail"
+                     title="DD Pro Wash 8"
+                     contents={["Wheels cleaned.", 
+                                "Arches rinsed.", 
+                                "Snow foam pre wash.", 
+                                "2 bucket wash.", 
+                                "Dried with microfiber towel and detailer.",
+                                "Door seals wiped.",
+                                "Exterior glass cleaned.",
+                                "Tyres dressed."
+                                ]}
+                     price="Starting From £50"
+                />
+                <ServiceCard
+                     title="DD Refresh Clean"
+                     contents={["Wheels cleaned.", 
+                                "Arches cleaned.",
+                                "Pre wash bug and grime pre wash.", 
+                                "Snow foam.", 
+                                "2 bucket wash.",
+                                "Door shuts washed.", 
+                                "Dried with plush microfiber towel and detailer.",
+                                "Glass cleaned in and out.",
+                                "Vacuum carpets and seats.",
+                                "Light shampoo throughout carpets and seats.",
+                                "Dash and doors wiped with interior detailer.",
+                                "Exterior sealant application on all surfaces.",
+                                "Tyres dressed."
+                                ]}
+                     price="Starting From £100"
+                />
+                <ServiceCard
+                     title="DD Deep Clean"
                      contents={["Wheels, tyres and arches cleaned.", 
                                 "Pre wash and snow foam.", 
                                 "2 bucket wash.",   
                                 "Clay towel decontamination.", 
                                 "Air and towel dried.",
-                                "Machine polish to refresh paint.",
-                                "3 to 6 month ceramic spray on paint.",
+                                "3 to 6 month protection on paint.",
                                 "Interior dusted and vacuumed throughout.",
-                                "Light shampoo on matts",
-                                "Dash, doors and consoles cleaned",
-                                "Interior dressed",
-                                "Glass cleaned"
+                                "Shampoo carpets and seats.",
+                                "Dash, doors and consoles cleaned.",
+                                "Interior dressed.",
+                                "Glass cleaned.",
+                                "Tyres dressed."
                                 ]}
-                     price="Starting From £350"
+                     price="Starting From £150"
                 />
-
                 <ServiceCard
-                    title="DD Diamond Enhancement Detail"
+                    title="DD Enhancement Detail"
                     contents={["Wheels, tyres and arches cleaned.", 
                                 "Pre wash and snow foam.", 
                                 "Door shuts, fuel cap, badges, grills and seams pre cleaned with soft brushes.",
@@ -66,7 +84,7 @@ export default function Services() {
                                 "Tyres dressed.",
                                 "Machine polish to enhance paintwork.",
                                 "3 year ceramic coating applied.",
-                                "Interior thoroughly hoovered throughout.",
+                                "Interior thoroughly vacuumed throughout.",
                                 "Light shampoo throughout carpets and matts.",
                                 "Leather cleaned and conditioned.",
                                 "Seats light shampoo.",
@@ -77,7 +95,31 @@ export default function Services() {
                             ]}
                      price="Starting From £800"
                 />
-
+                <ServiceCard
+                     title="3 Year Ceramic Coating"
+                     contents={["Wheels and tyres cleaned.", 
+                                "Pre wash and snow foam.", 
+                                "2 bucket wash.", 
+                                "3 stage paint decontamination.", 
+                                "Machine polish.",
+                                "Paint prep for ceramic coating.",
+                                "3 year ceramic coating applied."
+                                ]}
+                     price="Starting From £350"
+                />
+                <ServiceCard
+                     title="5 Year Ceramic Coating"
+                     contents={["Wheels and tyres cleaned.",
+                                "Wheel arches cleaned.", 
+                                "Pre wash and snow foam.", 
+                                "2 bucket wash.", 
+                                "3 stage paint decontamination.", 
+                                "Machine polish.",
+                                "Paint prep for ceramic coating.",
+                                "5 year ceramic coating applied."
+                                ]}
+                     price="Starting From £500"
+                />
                 <ServiceCard
                     title="DD Ultimate Vehicle Protection"
                     contents={["Wheels and tyres cleaned.",
@@ -89,7 +131,7 @@ export default function Services() {
                                 "3 stage decontamination.",
                                 "Air dry and plush microfiber towel dried.",
                                 "Glass cleaned and polished.",
-                                "1 or 2 stage correction to remove 80% of defects.",
+                                "Machine polished to remove 80% of defects.",
                                 "All surfaces prepped for coatings.",
                                 "Up to 2 year glass coating applied.",
                                 "Up to 2 year Wheel ceramic coating.",
@@ -107,63 +149,6 @@ export default function Services() {
                             ]}
                      price="Starting From £1000"
                 />
-
-                <ServiceCard
-                     title="DD Pro Wash 8"
-                     contents={["Wheels cleaned.", 
-                                "Arches rinsed.", 
-                                "Snow foam pre wash.", 
-                                "2 bucket wash.", 
-                                "Dried with microfiber towel and detailer.",
-                                "Door seals wiped.",
-                                "Exterior glass cleaned.",
-                                "Tyres dressed."
-                                ]}
-                     price="Starting From £60"
-                />
-                <ServiceCard
-                     title="DD Pro Wash 12"
-                     contents={["Wheels cleaned.", 
-                                "Arches cleaned.",
-                                "Pre wash bug and grime pre wash.", 
-                                "Snow foam.", 
-                                "2 bucket wash.",
-                                "Door shuts washed.", 
-                                "Dried with plush microfiber towel and detailer.",
-                                "Glass cleaned in and out.",
-                                "Hoover carpets and seats.",
-                                "Dash and doors wiped with interior detailer.",
-                                "Exterior sealant application on all surfaces.",
-                                "Tyres dressed."
-                                ]}
-                     price="Starting From £100"
-                />
-                <ServiceCard
-                     title="3 Year Ceramic Coating"
-                     contents={["Wheels and tyres cleaned.", 
-                                "Pre wash and snow foam.", 
-                                "2 bucket wash.", 
-                                "3 stage paint decontamination.", 
-                                "Machine polish.",
-                                "Paint prep for ceramic coating.",
-                                "3 year ceramic coating applied."
-                                ]}
-                     price="Starting From £250"
-                />
-                <ServiceCard
-                     title="5 Year Ceramic Coating"
-                     contents={["Wheels and tyres cleaned.",
-                                "Wheel arches cleaned.", 
-                                "Pre wash and snow foam.", 
-                                "2 bucket wash.", 
-                                "3 stage paint decontamination.", 
-                                "Machine polish.",
-                                "Paint prep for ceramic coating.",
-                                "5 year ceramic coating applied."
-                                ]}
-                     price="Starting From £500"
-                />
-
                 <ServiceCard
                      title="Maintenance Plans"
                      contents={["Depending on the level of maintenance required"]}

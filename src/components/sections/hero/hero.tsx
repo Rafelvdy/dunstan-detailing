@@ -144,7 +144,6 @@ const Hero = ({ onOpenContactPopup }: HeroProps) => {
         });
       }, []);
 
-    // Initial boot: set first source on active layer and prepare the next on hidden layer
     useEffect(() => {
         const activeRef = activeLayer === "A" ? videoARef : videoBRef;
         const hiddenRef = activeLayer === "A" ? videoBRef : videoARef;
@@ -154,17 +153,14 @@ const Hero = ({ onOpenContactPopup }: HeroProps) => {
                 activeRef.current.poster = posters[activeIndex];
             }
             activeRef.current.play().catch(() => {});
-            // Make active visible
             activeRef.current.style.opacity = "1";
         }
         if (hiddenRef.current) {
             hiddenRef.current.style.opacity = "0";
         }
         prepareNext(activeIndex, activeLayer);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // On timeupdate, if we're near end and next is ready, crossfade; also ensure we crossfade on ended as fallback
     const handleTimeUpdate = useCallback(() => {
         const currentRef = activeLayer === "A" ? videoARef : videoBRef;
         const el = currentRef.current;
@@ -188,8 +184,7 @@ const Hero = ({ onOpenContactPopup }: HeroProps) => {
 
     return (
         <section className={styles.HeroContainer} id="home">
-            
-            <div className={styles.HeroVideoContainer} ref={heroVideoContainerRef}>
+           <div className={styles.HeroVideoContainer} ref={heroVideoContainerRef}>
                 <video
                     ref={videoARef}
                     autoPlay
