@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Montserrat, Roboto } from "next/font/google";
-// import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next"
 
 import "./globals.css";
 
@@ -157,6 +157,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${roboto.variable} antialiased`}
       >
+        <Analytics />
         {children}
       </body>
     </html>
