@@ -105,7 +105,7 @@ export default function Services() {
                                 "Paint prep for ceramic coating.",
                                 "3 year ceramic coating applied."
                                 ]}
-                     price="Starting From £350"
+                     price="Small Cars Starting From £450"
                 />
                 <ServiceCard
                      title="5 Year Ceramic Coating"
@@ -118,7 +118,7 @@ export default function Services() {
                                 "Paint prep for ceramic coating.",
                                 "5 year ceramic coating applied."
                                 ]}
-                     price="Starting From £500"
+                     price="Small Cars Starting From £600"
                 />
                 <ServiceCard
                     title="DD Ultimate Vehicle Protection"

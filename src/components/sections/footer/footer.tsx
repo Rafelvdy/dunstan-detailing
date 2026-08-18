@@ -31,7 +31,7 @@ export default function Footer() {
                 <Image src="/images/map.png" alt="map" width={1000} height={1000} className={styles.mapImage}/>
             </div>
             <div className={styles.contactContainer}>
-                <h3 className={styles.contactTitle}>Have an inquiry or want to book a service?</h3>
+                <h3 className={styles.contactTitle}>Have an enquiry or want to book a service?</h3>
                 <p className={styles.contactText}>Contact us today!</p>
                 <div className={styles.contactRow}>
                     <button
