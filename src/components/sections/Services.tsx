@@ -79,7 +79,7 @@ export default function Services() {
                   isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                 }`}
               >
-                <div className="overflow-hidden transition-[padding] duration-500 ease-out-expo group-hover/row:px-3.5">
+                <div className="overflow-hidden px-2 transition-[padding] duration-500 ease-out-expo group-hover/row:px-3.5">
                   <ol className="list-inside list-decimal pb-8 text-[15px] font-light leading-[1.7] text-ink/80 transition-colors duration-300 group-hover/row:text-bg lg:columns-3 lg:gap-x-10 lg:pl-[100px] [&>li]:break-inside-avoid">
                     {service.items.map((item) => (
                       <li key={item}>{item}</li>
