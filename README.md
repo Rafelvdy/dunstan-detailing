@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dunstan Detailing
 
-## Getting Started
+Website for Dunstan Detailing, a mobile car detailing service in Maidstone, Kent.
+Next.js (App Router), React 19, Tailwind CSS v4, GSAP and Lenis for motion.
 
-First, run the development server:
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run lint
+npm run build    # production build; the homepage is fully static
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What | Where |
+| --- | --- |
+| Business details, contact, social links | `src/data/site.ts` |
+| Services and prices | `src/data/services.ts` |
+| Reviews | `src/data/reviews.ts` |
+| Gallery photos, alt text and captions | `src/data/gallery.ts` |
+| Page sections | `src/components/sections/` |
+| Scroll and reveal animations | `src/components/motion/` |
+| SEO structured data | `src/lib/jsonld.ts` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Page copy that isn't in `src/data/` (About, "What makes us different?") is in `src/components/sections/About.tsx` and `src/components/layout/Footer.tsx`.
 
-## Learn More
+## Gallery images
 
-To learn more about Next.js, take a look at the following resources:
+Web-ready photos are in `public/images/gallery/`. To add or replace photos, put the
+full-size originals in `assets-src/gallery/` (git-ignored), then run:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run optimize-images
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This resizes them, writes `public/images/gallery/`, and regenerates the blur placeholders
+in `src/data/gallery-meta.generated.json`. Add a matching entry (alt text and title) to
+`src/data/gallery.ts`.
 
-## Deploy on Vercel
+## Motion
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Animations use GSAP ScrollTrigger and Lenis smooth scrolling, and are skipped for
+visitors who prefer reduced motion.

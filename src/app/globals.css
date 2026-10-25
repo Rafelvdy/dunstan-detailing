@@ -1,62 +1,93 @@
 @import "tailwindcss";
 
-:root {
-  /* --background: #0a0a0a; */
-  --background: #0a0a0a;
-  --foreground: #ededed;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-homoarakhn: var(--font-homoarakhn);
-  --font-montserrat: var(--font-montserrat);
-  --font-roboto: var(--font-roboto);
-  --animate-marquee: marquee var(--duration) infinite linear;
+  --color-bg: #0b0c0d;
+  --color-panel: #14161a;
+  --color-ink: #e9e8e4;
+  --color-mute: #8c9196;
+  --color-line: #26292c;
+  --color-acc: #ff5a1f;
 
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(calc(-100% - var(--gap)));
-    }
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --spacing-pad: clamp(18px, 2.8vw, 40px);
+  --spacing-section: clamp(80px, 11vw, 170px);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-bg);
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-acc);
+    outline-offset: 3px;
+  }
+
+  /* Lenis smooth-scroll requirements */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@utility disp {
+  font-stretch: 125%;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+}
+
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes bar-in {
+  from {
+    transform: translateY(-100%);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes drip {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
 }
 
-/* Prevent scrolling when service card is in fullscreen mode */
-body.service-card-fullscreen {
-  overflow: hidden;
-}
-
-@font-face {
-  font-family: "Homoarakhn";
-  src: url("/fonts/HOMOARAK.TTF") format("truetype");
-  font-weight: 400, 700, 900;
-  font-style: normal;
-}
-
-main {
-  overflow-x: hidden;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
