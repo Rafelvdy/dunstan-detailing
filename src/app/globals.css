@@ -1,92 +1,93 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-bg: #121212;
-  --color-surface: #1a1a1a;
-  --color-fg: #ffffff;
-  --color-muted: rgb(255 255 255 / 0.62);
-  --color-line: rgb(255 255 255 / 0.12);
-  --color-line-strong: rgb(255 255 255 / 0.3);
-  --color-accent: #8f7fee;
+  --color-bg: #0b0c0d;
+  --color-panel: #14161a;
+  --color-ink: #e9e8e4;
+  --color-mute: #8c9196;
+  --color-line: #26292c;
+  --color-acc: #ff5a1f;
 
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-inter-tight), var(--font-inter), system-ui, sans-serif;
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 
-  --radius-*: initial;
-  --text-display: clamp(2.5rem, 7vw, 3.5625rem);
-  --tracking-display: -0.035em;
-  --leading-display: 1.05;
+  --spacing-pad: clamp(18px, 2.8vw, 40px);
+  --spacing-section: clamp(80px, 11vw, 170px);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
   html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 4.5rem;
     background: var(--color-bg);
   }
 
   body {
     background: var(--color-bg);
-    color: var(--color-fg);
+    color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    letter-spacing: var(--tracking-display);
-    line-height: var(--leading-display);
+    overflow-x: hidden;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-acc);
     outline-offset: 3px;
   }
 
-  summary {
-    cursor: pointer;
-    list-style: none;
+  /* Lenis smooth-scroll requirements */
+  html.lenis,
+  html.lenis body {
+    height: auto;
   }
-  summary::-webkit-details-marker {
-    display: none;
-  }
-}
-
-@layer utilities {
-  .fade-up {
-    animation: fade-up 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
-  }
-
-  /* Scroll-driven reveal where supported; content is simply visible elsewhere. */
-  @supports (animation-timeline: view()) {
-    .reveal {
-      animation: fade-up linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 45%;
-    }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
   }
 }
 
-@keyframes fade-up {
+@utility disp {
+  font-stretch: 125%;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+}
+
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes bar-in {
   from {
-    opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(-100%);
   }
-  to {
-    opacity: 1;
-    transform: none;
+}
+
+@keyframes drip {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .fade-up,
-  .reveal {
-    animation: none;
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }

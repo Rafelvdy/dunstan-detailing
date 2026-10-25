@@ -1,6 +1,7 @@
 import meta from "./gallery-meta.generated.json";
 
 export interface GalleryImage {
+  id: string;
   src: string;
   alt: string;
   title: string;
@@ -112,9 +113,15 @@ const entries: { id: keyof typeof meta; alt: string; title: string }[] = [
   },
 ];
 
-export const galleryImages: GalleryImage[] = entries.map(({ id, alt, title }) => ({
-  src: `/images/gallery/${id}.webp`,
-  alt,
-  title,
-  ...meta[id],
-}));
+/** Shown first, in this order, in the bento grid. Everything else follows under "View more". */
+const FEATURED = ["4a", "1a", "1b", "10a", "9a", "7a", "14a", "12a"];
+const rank = (id: string) => {
+  const i = FEATURED.indexOf(id);
+  return i === -1 ? FEATURED.length : i;
+};
+
+export const galleryImages: GalleryImage[] = entries
+  .map(({ id, alt, title }) => ({ id, src: `/images/gallery/${id}.webp`, alt, title, ...meta[id] }))
+  .sort((a, b) => rank(a.id) - rank(b.id));
+
+export const FEATURED_COUNT = FEATURED.length;

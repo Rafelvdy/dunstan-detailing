@@ -2,6 +2,8 @@ export interface Service {
   title: string;
   price: string;
   items: string[];
+  /** Overrides the default "N steps" label in the services table. */
+  stepLabel?: string;
 }
 
 export const services: Service[] = [
@@ -157,11 +159,13 @@ export const services: Service[] = [
   {
     title: "Maintenance Plans",
     price: "Starting From £50 to £150",
+    stepLabel: "—",
     items: ["Depending on the level of maintenance required"],
   },
   {
     title: "Additional Services",
     price: "Please contact us for a quote",
+    stepLabel: "8 options",
     items: [
       "Headlight restoration",
       "Plastic trim restoration",

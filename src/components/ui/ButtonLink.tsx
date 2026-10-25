@@ -1,22 +1,22 @@
 import type { ComponentProps } from "react";
 
-type Variant = "outline" | "solid";
+export type ButtonVariant = "solid" | "ghost";
 
 const base =
-  "inline-flex items-center justify-center border px-5 py-2.5 text-sm font-medium transition-colors duration-200";
-const variants: Record<Variant, string> = {
-  outline: "border-line-strong text-fg hover:bg-fg hover:text-bg",
-  solid: "border-fg bg-fg text-bg hover:bg-transparent hover:text-fg",
+  "label inline-flex items-center gap-3 px-6 py-3.5 font-medium transition-colors duration-300";
+const variants: Record<ButtonVariant, string> = {
+  solid: "bg-acc text-bg hover:bg-ink",
+  ghost: "border border-ink text-ink hover:bg-ink hover:text-bg",
 };
 
+/** Class string shared by the anchor and <button> versions of the site's button. */
+export const buttonClass = (variant: ButtonVariant = "solid", extra = "") =>
+  `${base} ${variants[variant]} ${extra}`;
+
 interface ButtonLinkProps extends ComponentProps<"a"> {
-  variant?: Variant;
+  variant?: ButtonVariant;
 }
 
-export default function ButtonLink({
-  variant = "outline",
-  className = "",
-  ...props
-}: ButtonLinkProps) {
-  return <a className={`${base} ${variants[variant]} ${className}`} {...props} />;
+export default function ButtonLink({ variant = "solid", className = "", ...props }: ButtonLinkProps) {
+  return <a className={buttonClass(variant, className)} {...props} />;
 }

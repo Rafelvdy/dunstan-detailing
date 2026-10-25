@@ -3,6 +3,7 @@ export interface Review {
   text: string;
   rating: number;
   serviceType: string;
+  featured?: boolean;
 }
 
 export const reviews: Review[] = [
@@ -23,6 +24,7 @@ export const reviews: Review[] = [
     text: "My 6 year old black car had marks on it that I thought would never come out but after Luke worked his magic you could shave in the gloss reflection he produced!",
     rating: 5,
     serviceType: "Full Detail",
+    featured: true,
   },
   {
     customerName: "Susan Bevan",
