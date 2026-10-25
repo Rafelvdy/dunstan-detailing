@@ -75,9 +75,6 @@ export default function Hero() {
         <i data-tick className={`${tick} right-4 top-4 border-r-2 border-t-2`} />
         <i data-tick className={`${tick} bottom-4 left-4 border-b-2 border-l-2`} />
         <i data-tick className={`${tick} bottom-4 right-4 border-b-2 border-r-2`} />
-        <div ref={fig} className="label absolute left-[46px] top-[30px] text-ink/80">
-          {FIG_LABEL}
-        </div>
 
         <h1
           data-title

@@ -38,14 +38,13 @@ function Tile({ image, index, className = "", parallax = true, onOpen }: TilePro
     <button
       type="button"
       data-tile
-      aria-label={`Open photo: ${image.alt}`}
       onClick={() => onOpen(index)}
       className={`group relative cursor-zoom-in overflow-hidden bg-panel text-left ${className}`}
     >
       <div data-inner className={`absolute inset-x-0 ${parallax ? "-inset-y-[7%]" : "inset-y-0"}`}>
         <Image
           src={image.src}
-          alt=""
+          alt={image.alt}
           fill
           sizes="(min-width: 1024px) 400px, 50vw"
           placeholder="blur"
