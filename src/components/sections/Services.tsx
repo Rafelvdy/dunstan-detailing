@@ -42,7 +42,7 @@ export default function Services() {
               key={service.title}
               delay={i * 0.04}
               y={30}
-              className={`border-b border-line transition-colors duration-500 ${isOpen ? "bg-panel" : ""}`}
+              className={`group/row relative isolate border-b border-line before:absolute before:inset-0 before:-z-10 before:origin-bottom before:scale-y-0 before:bg-acc before:transition-transform before:duration-500 before:ease-out-expo hover:before:scale-y-100 ${isOpen ? "bg-panel" : ""}`}
             >
               <h3>
                 <button
@@ -51,20 +51,20 @@ export default function Services() {
                   aria-expanded={isOpen}
                   aria-controls={`service-panel-${i}`}
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="group relative isolate grid w-full grid-cols-[44px_1fr] items-baseline gap-y-1.5 py-[clamp(18px,2.2vw,28px)] text-left transition-[padding,color] duration-500 ease-out-expo before:absolute before:inset-0 before:-z-10 before:origin-bottom before:scale-y-0 before:bg-acc before:transition-transform before:duration-500 before:ease-out-expo hover:px-3.5 hover:text-bg hover:before:scale-y-100 lg:grid-cols-[70px_1fr_140px_290px]"
+                  className="grid w-full grid-cols-[44px_1fr] items-baseline gap-y-1.5 py-[clamp(18px,2.2vw,28px)] text-left transition-[padding,color] duration-500 ease-out-expo group-hover/row:px-3.5 group-hover/row:text-bg lg:grid-cols-[70px_1fr_140px_290px]"
                 >
                   <span
-                    className={`label transition-colors group-hover:text-bg ${isOpen ? "text-acc" : "text-mute"}`}
+                    className={`label transition-colors group-hover/row:text-bg ${isOpen ? "text-acc" : "text-mute"}`}
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="text-[clamp(1.3rem,2.7vw,2.5rem)] font-bold tracking-[-.02em] [font-stretch:112%]">
                     {service.title}
                   </span>
-                  <span className="label hidden text-mute transition-colors group-hover:text-bg lg:block">
+                  <span className="label hidden text-mute transition-colors group-hover/row:text-bg lg:block">
                     {stepLabel(service)}
                   </span>
-                  <span className="label col-start-2 text-mute transition-colors group-hover:text-bg lg:col-start-auto lg:text-right lg:text-ink">
+                  <span className="label col-start-2 text-mute transition-colors group-hover/row:text-bg lg:col-start-auto lg:text-right lg:text-ink">
                     {service.price}
                   </span>
                 </button>
@@ -79,8 +79,8 @@ export default function Services() {
                   isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                 }`}
               >
-                <div className="overflow-hidden">
-                  <ol className="list-inside list-decimal pb-8 text-[15px] font-light leading-[1.7] text-ink/80 lg:columns-3 lg:gap-x-10 lg:pl-[100px] [&>li]:break-inside-avoid">
+                <div className="overflow-hidden transition-[padding] duration-500 ease-out-expo group-hover/row:px-3.5">
+                  <ol className="list-inside list-decimal pb-8 text-[15px] font-light leading-[1.7] text-ink/80 transition-colors duration-300 group-hover/row:text-bg lg:columns-3 lg:gap-x-10 lg:pl-[100px] [&>li]:break-inside-avoid">
                     {service.items.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
